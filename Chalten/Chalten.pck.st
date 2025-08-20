@@ -1,970 +1,1012 @@
-'From Cuis 5.0 [latest update: #4972] on 12 November 2021 at 12:21:33 pm'!
-'Description Fixed some tests'!
-!provides: 'Chalten' 1 18!
+'From Cuis7.5 [latest update: #7428] on 20 August 2025 at 12:10:21 pm'!
+'Description Fixed some tests for singular unit'!
+!provides: 'Chalten' 1 19!
 !requires: 'Aconcagua' 1 1 nil!
-SystemOrganization addCategory: 'Chalten-TimeModel'!
-SystemOrganization addCategory: 'Chalten-TimeLineFilterModel'!
-SystemOrganization addCategory: 'Chalten-TimeLineFilterModelTests'!
-SystemOrganization addCategory: 'Chalten-TimeModelTests'!
+SystemOrganization addCategory: #'Chalten-TimeModel'!
+SystemOrganization addCategory: #'Chalten-TimeLineFilterModel'!
+SystemOrganization addCategory: #'Chalten-TimeLineFilterModelTests'!
+SystemOrganization addCategory: #'Chalten-TimeModelTests'!
 
 
-!classDefinition: #PointInTime category: 'Chalten-TimeModel'!
-IntervalAwareMagnitude subclass: #PointInTime
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'PointInTime class' category: 'Chalten-TimeModel'!
-PointInTime class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianDate category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianDate
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianDate class' category: 'Chalten-TimeModel'!
-GregorianDate class
-	instanceVariableNames: ''!
-
-!classDefinition: #FixedGregorianDate category: 'Chalten-TimeModel'!
-GregorianDate subclass: #FixedGregorianDate
-	instanceVariableNames: 'dayNumber monthOfYear'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'FixedGregorianDate class' category: 'Chalten-TimeModel'!
-FixedGregorianDate class
-	instanceVariableNames: 'theBeginningOfTime theEndOfTime'!
-
-!classDefinition: #FilteredGregorianDate category: 'Chalten-TimeLineFilterModel'!
-GregorianDate subclass: #FilteredGregorianDate
-	instanceVariableNames: 'date timeLineFilter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'FilteredGregorianDate class' category: 'Chalten-TimeLineFilterModel'!
-FilteredGregorianDate class
-	instanceVariableNames: ''!
-
-!classDefinition: #RelativeGregorianDate category: 'Chalten-TimeLineFilterModel'!
-GregorianDate subclass: #RelativeGregorianDate
-	instanceVariableNames: 'timespan timeLineFilter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'RelativeGregorianDate class' category: 'Chalten-TimeLineFilterModel'!
-RelativeGregorianDate class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianDateTime category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianDateTime
-	instanceVariableNames: 'timeOfDay date'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianDateTime class' category: 'Chalten-TimeModel'!
-GregorianDateTime class
-	instanceVariableNames: 'theBeginningOfTime theEndOfTime'!
-
-!classDefinition: #GregorianDay category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianDay
-	instanceVariableNames: 'name positionInWeek'
-	classVariableNames: 'Days MinusOneDay OneDay SevenDays ThirtyDays ThirtyOneDays ThreeHundredSixtyDays ThreeHundredSixtyFiveDays ThreeHundredSixtySixDays TwentyEightDays TwentyNineDays TwoDays ZeroDays'
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianDay class' category: 'Chalten-TimeModel'!
-GregorianDay class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianDayOfMonth category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianDayOfMonth
-	instanceVariableNames: 'month dayNumber'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianDayOfMonth class' category: 'Chalten-TimeModel'!
-GregorianDayOfMonth class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianMonth category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianMonth
-	instanceVariableNames: ''
-	classVariableNames: 'FourMonths Months OneMonth SixMonths ThreeMonths TwelveMonths TwoMonths ZeroMonths'
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianMonth class' category: 'Chalten-TimeModel'!
-GregorianMonth class
-	instanceVariableNames: ''!
-
-!classDefinition: #FebruaryGregorianMonth category: 'Chalten-TimeModel'!
-GregorianMonth subclass: #FebruaryGregorianMonth
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'FebruaryGregorianMonth class' category: 'Chalten-TimeModel'!
-FebruaryGregorianMonth class
-	instanceVariableNames: 'uniqueInstance'!
-
-!classDefinition: #ThirtyDaysGregorianMonth category: 'Chalten-TimeModel'!
-GregorianMonth subclass: #ThirtyDaysGregorianMonth
-	instanceVariableNames: 'name number numberOfDaysFromJanuaryFirstInNonLeapYear numberOfDaysFromJanuaryFirst'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'ThirtyDaysGregorianMonth class' category: 'Chalten-TimeModel'!
-ThirtyDaysGregorianMonth class
-	instanceVariableNames: ''!
-
-!classDefinition: #ThirtyOneDaysGregorianMonth category: 'Chalten-TimeModel'!
-GregorianMonth subclass: #ThirtyOneDaysGregorianMonth
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'ThirtyOneDaysGregorianMonth class' category: 'Chalten-TimeModel'!
-ThirtyOneDaysGregorianMonth class
-	instanceVariableNames: ''!
-
-!classDefinition: #JanuaryGregorianMonth category: 'Chalten-TimeModel'!
-ThirtyOneDaysGregorianMonth subclass: #JanuaryGregorianMonth
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'JanuaryGregorianMonth class' category: 'Chalten-TimeModel'!
-JanuaryGregorianMonth class
-	instanceVariableNames: 'uniqueInstance'!
-
-!classDefinition: #NonSpecificThirtyOneDaysGregorianMonth category: 'Chalten-TimeModel'!
-ThirtyOneDaysGregorianMonth subclass: #NonSpecificThirtyOneDaysGregorianMonth
-	instanceVariableNames: 'name number numberOfDaysFromJanuaryFirstInNonLeapYear numberOfDaysFromJanuaryFirst'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'NonSpecificThirtyOneDaysGregorianMonth class' category: 'Chalten-TimeModel'!
-NonSpecificThirtyOneDaysGregorianMonth class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianMonthOfYear category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianMonthOfYear
-	instanceVariableNames: 'year month'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianMonthOfYear class' category: 'Chalten-TimeModel'!
-GregorianMonthOfYear class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianYear category: 'Chalten-TimeModel'!
-PointInTime subclass: #GregorianYear
-	instanceVariableNames: ''
-	classVariableNames: 'OneYear ZeroYears'
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianYear class' category: 'Chalten-TimeModel'!
-GregorianYear class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianLeapYear category: 'Chalten-TimeModel'!
-GregorianYear subclass: #GregorianLeapYear
-	instanceVariableNames: 'number numberOfDaysFromBaseDate'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianLeapYear class' category: 'Chalten-TimeModel'!
-GregorianLeapYear class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianNonLeapYear category: 'Chalten-TimeModel'!
-GregorianYear subclass: #GregorianNonLeapYear
-	instanceVariableNames: 'number numberOfDaysFromBaseDate'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianNonLeapYear class' category: 'Chalten-TimeModel'!
-GregorianNonLeapYear class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeOfDay category: 'Chalten-TimeModel'!
-PointInTime subclass: #TimeOfDay
-	instanceVariableNames: 'timeFromMidnight'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'TimeOfDay class' category: 'Chalten-TimeModel'!
-TimeOfDay class
-	instanceVariableNames: 'firstTimeOfDay lastTimeOfDay noon oneMillisecond oneSecond twentyFourHours zeroHours'!
-
-!classDefinition: #DefinedByRules category: 'Chalten-TimeLineFilterModel'!
-Collection subclass: #DefinedByRules
-	instanceVariableNames: 'rules universe'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'DefinedByRules class' category: 'Chalten-TimeLineFilterModel'!
-DefinedByRules class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeLineFilterStream category: 'Chalten-TimeLineFilterModel'!
-Stream subclass: #TimeLineFilterStream
-	instanceVariableNames: 'from current timeLineFilter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'TimeLineFilterStream class' category: 'Chalten-TimeLineFilterModel'!
-TimeLineFilterStream class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidDayOfMonthException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidDayOfMonthException
-	instanceVariableNames: 'month dayNumber'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidDayOfMonthException class' category: 'Chalten-TimeModel'!
-InvalidDayOfMonthException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidGregorianDateException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidGregorianDateException
-	instanceVariableNames: 'dayNumber monthOfYear'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidGregorianDateException class' category: 'Chalten-TimeModel'!
-InvalidGregorianDateException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidGregorianDayNameException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidGregorianDayNameException
-	instanceVariableNames: 'name'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidGregorianDayNameException class' category: 'Chalten-TimeModel'!
-InvalidGregorianDayNameException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidGregorianDayNumberException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidGregorianDayNumberException
-	instanceVariableNames: 'dayNumber'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidGregorianDayNumberException class' category: 'Chalten-TimeModel'!
-InvalidGregorianDayNumberException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidGregorianMonthNameException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidGregorianMonthNameException
-	instanceVariableNames: 'name'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidGregorianMonthNameException class' category: 'Chalten-TimeModel'!
-InvalidGregorianMonthNameException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidGregorianMonthNumberException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidGregorianMonthNumberException
-	instanceVariableNames: 'number'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidGregorianMonthNumberException class' category: 'Chalten-TimeModel'!
-InvalidGregorianMonthNumberException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidGregorianYearNumberException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidGregorianYearNumberException
-	instanceVariableNames: 'number'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidGregorianYearNumberException class' category: 'Chalten-TimeModel'!
-InvalidGregorianYearNumberException class
-	instanceVariableNames: ''!
-
-!classDefinition: #InvalidTimeOfDayException category: 'Chalten-TimeModel'!
-Error subclass: #InvalidTimeOfDayException
-	instanceVariableNames: 'time'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'InvalidTimeOfDayException class' category: 'Chalten-TimeModel'!
-InvalidTimeOfDayException class
-	instanceVariableNames: ''!
-
-!classDefinition: #DateNotIncludedInTimeLineFilterException category: 'Chalten-TimeLineFilterModel'!
-Error subclass: #DateNotIncludedInTimeLineFilterException
-	instanceVariableNames: 'date timeLineFilter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'DateNotIncludedInTimeLineFilterException class' category: 'Chalten-TimeLineFilterModel'!
-DateNotIncludedInTimeLineFilterException class
-	instanceVariableNames: ''!
-
-!classDefinition: #NotIterateUniverseException category: 'Chalten-TimeLineFilterModel'!
-Error subclass: #NotIterateUniverseException
-	instanceVariableNames: 'universe'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'NotIterateUniverseException class' category: 'Chalten-TimeLineFilterModel'!
-NotIterateUniverseException class
-	instanceVariableNames: ''!
-
-!classDefinition: #AllDatesUniverseTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #AllDatesUniverseTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'AllDatesUniverseTest class' category: 'Chalten-TimeLineFilterModelTests'!
-AllDatesUniverseTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #ArgentineLaw23555RuleTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #ArgentineLaw23555RuleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'ArgentineLaw23555RuleTest class' category: 'Chalten-TimeLineFilterModelTests'!
-ArgentineLaw23555RuleTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #CardinalDayMonthRuleTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #CardinalDayMonthRuleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'CardinalDayMonthRuleTest class' category: 'Chalten-TimeLineFilterModelTests'!
-CardinalDayMonthRuleTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #DayOfMonthRuleTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #DayOfMonthRuleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'DayOfMonthRuleTest class' category: 'Chalten-TimeLineFilterModelTests'!
-DayOfMonthRuleTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #DefinedByRulesTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #DefinedByRulesTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'DefinedByRulesTest class' category: 'Chalten-TimeLineFilterModelTests'!
-DefinedByRulesTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #FilteredGregorianDateTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #FilteredGregorianDateTest
-	instanceVariableNames: 'today defaultFilteredDate argentineTimeLineFilter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'FilteredGregorianDateTest class' category: 'Chalten-TimeLineFilterModelTests'!
-FilteredGregorianDateTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #IntervalConstrainedInclusionRuleTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #IntervalConstrainedInclusionRuleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'IntervalConstrainedInclusionRuleTest class' category: 'Chalten-TimeLineFilterModelTests'!
-IntervalConstrainedInclusionRuleTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #NegatedTimeLineFilterTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #NegatedTimeLineFilterTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'NegatedTimeLineFilterTest class' category: 'Chalten-TimeLineFilterModelTests'!
-NegatedTimeLineFilterTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #RelativeGregorianDateTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #RelativeGregorianDateTest
-	instanceVariableNames: 'relativeDate absoluteDate timeLineFilter'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'RelativeGregorianDateTest class' category: 'Chalten-TimeLineFilterModelTests'!
-RelativeGregorianDateTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #SpecificDayRuleTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #SpecificDayRuleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'SpecificDayRuleTest class' category: 'Chalten-TimeLineFilterModelTests'!
-SpecificDayRuleTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #SpecificObjectInclusionRuleTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #SpecificObjectInclusionRuleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'SpecificObjectInclusionRuleTest class' category: 'Chalten-TimeLineFilterModelTests'!
-SpecificObjectInclusionRuleTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeLineFilterStreamTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #TimeLineFilterStreamTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'TimeLineFilterStreamTest class' category: 'Chalten-TimeLineFilterModelTests'!
-TimeLineFilterStreamTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeLineFilterTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #TimeLineFilterTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'TimeLineFilterTest class' category: 'Chalten-TimeLineFilterModelTests'!
-TimeLineFilterTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #UniverseTest category: 'Chalten-TimeLineFilterModelTests'!
-TestCase subclass: #UniverseTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'UniverseTest class' category: 'Chalten-TimeLineFilterModelTests'!
-UniverseTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #FebruaryGregorianMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #FebruaryGregorianMonthTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'FebruaryGregorianMonthTest class' category: 'Chalten-TimeModelTests'!
-FebruaryGregorianMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #FixedGregorianDateTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #FixedGregorianDateTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'FixedGregorianDateTest class' category: 'Chalten-TimeModelTests'!
-FixedGregorianDateTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianDateTimeTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianDateTimeTest
-	instanceVariableNames: 'december31Of2003 december31Of2003On23Hours59Minutes59Seconds januaryFirstOf2004 januaryFirstOf2004On00Hours00Minutes01Seconds januaryFirstOf2004On03Hours januaryFirstOf2004On23Hours59Minutes58Seconds januaryFirstOf2004On23Hours59Minutes59Seconds januarySecondOf2004 januarySecondOf2004On00Hours00Minutes01Seconds januarySecondOf2004On23Hours januarySecondOf2004On23Hours59Minutes59Seconds januaryThirdOf2004'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianDateTimeTest class' category: 'Chalten-TimeModelTests'!
-GregorianDateTimeTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianDayOfMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianDayOfMonthTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianDayOfMonthTest class' category: 'Chalten-TimeModelTests'!
-GregorianDayOfMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianDayTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianDayTest
-	instanceVariableNames: 'sunday monday thursday wednesday tuesday friday saturday'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianDayTest class' category: 'Chalten-TimeModelTests'!
-GregorianDayTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianMonthOfYearTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianMonthOfYearTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianMonthOfYearTest class' category: 'Chalten-TimeModelTests'!
-GregorianMonthOfYearTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianMonthTest
-	instanceVariableNames: 'january february march april may june july august september october november december'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianMonthTest class' category: 'Chalten-TimeModelTests'!
-GregorianMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianTimespanTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianTimespanTest
-	instanceVariableNames: 'januaryFirstOf2004 january31Of2004'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianTimespanTest class' category: 'Chalten-TimeModelTests'!
-GregorianTimespanTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #GregorianYearTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #GregorianYearTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'GregorianYearTest class' category: 'Chalten-TimeModelTests'!
-GregorianYearTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #JanuaryGregorianMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #JanuaryGregorianMonthTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'JanuaryGregorianMonthTest class' category: 'Chalten-TimeModelTests'!
-JanuaryGregorianMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #MoreThanOnePointInTimeIntervalStrategyTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #MoreThanOnePointInTimeIntervalStrategyTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'MoreThanOnePointInTimeIntervalStrategyTest class' category: 'Chalten-TimeModelTests'!
-MoreThanOnePointInTimeIntervalStrategyTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #NonSpecificThirtyOneDaysGregorianMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #NonSpecificThirtyOneDaysGregorianMonthTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'NonSpecificThirtyOneDaysGregorianMonthTest class' category: 'Chalten-TimeModelTests'!
-NonSpecificThirtyOneDaysGregorianMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #ThirtyDaysGregorianMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #ThirtyDaysGregorianMonthTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'ThirtyDaysGregorianMonthTest class' category: 'Chalten-TimeModelTests'!
-ThirtyDaysGregorianMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #ThirtyOneDaysGregorianMonthTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #ThirtyOneDaysGregorianMonthTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'ThirtyOneDaysGregorianMonthTest class' category: 'Chalten-TimeModelTests'!
-ThirtyOneDaysGregorianMonthTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeOfDayTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #TimeOfDayTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'TimeOfDayTest class' category: 'Chalten-TimeModelTests'!
-TimeOfDayTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeUnitsTest category: 'Chalten-TimeModelTests'!
-TestCase subclass: #TimeUnitsTest
-	instanceVariableNames: 'timeUnits'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModelTests'!
-!classDefinition: 'TimeUnitsTest class' category: 'Chalten-TimeModelTests'!
-TimeUnitsTest class
-	instanceVariableNames: ''!
-
-!classDefinition: #PointInTimeIntervalStrategy category: 'Chalten-TimeModel'!
+!classDefinition: #PointInTimeIntervalStrategy category: #'Chalten-TimeModel'!
 IntervalStrategy subclass: #PointInTimeIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeModel'!
-!classDefinition: 'PointInTimeIntervalStrategy class' category: 'Chalten-TimeModel'!
+!classDefinition: 'PointInTimeIntervalStrategy class' category: #'Chalten-TimeModel'!
 PointInTimeIntervalStrategy class
 	instanceVariableNames: ''!
 
-!classDefinition: #DefaultPointInTimeIntervalStrategy category: 'Chalten-TimeModel'!
+!classDefinition: #DefaultPointInTimeIntervalStrategy category: #'Chalten-TimeModel'!
 PointInTimeIntervalStrategy subclass: #DefaultPointInTimeIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeModel'!
-!classDefinition: 'DefaultPointInTimeIntervalStrategy class' category: 'Chalten-TimeModel'!
+!classDefinition: 'DefaultPointInTimeIntervalStrategy class' category: #'Chalten-TimeModel'!
 DefaultPointInTimeIntervalStrategy class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #MoreThanOnePointInTimeIntervalStrategy category: 'Chalten-TimeModel'!
+!classDefinition: #MoreThanOnePointInTimeIntervalStrategy category: #'Chalten-TimeModel'!
 PointInTimeIntervalStrategy subclass: #MoreThanOnePointInTimeIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeModel'!
-!classDefinition: 'MoreThanOnePointInTimeIntervalStrategy class' category: 'Chalten-TimeModel'!
+!classDefinition: 'MoreThanOnePointInTimeIntervalStrategy class' category: #'Chalten-TimeModel'!
 MoreThanOnePointInTimeIntervalStrategy class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #RoundedTimelineIntervalStrategy category: 'Chalten-TimeModel'!
+!classDefinition: #RoundedTimelineIntervalStrategy category: #'Chalten-TimeModel'!
 PointInTimeIntervalStrategy subclass: #RoundedTimelineIntervalStrategy
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeModel'!
-!classDefinition: 'RoundedTimelineIntervalStrategy class' category: 'Chalten-TimeModel'!
+!classDefinition: 'RoundedTimelineIntervalStrategy class' category: #'Chalten-TimeModel'!
 RoundedTimelineIntervalStrategy class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #GregorianTimespan category: 'Chalten-TimeModel'!
-Object subclass: #GregorianTimespan
-	instanceVariableNames: 'from duration'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'GregorianTimespan class' category: 'Chalten-TimeModel'!
-GregorianTimespan class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeModelInitialization category: 'Chalten-TimeModel'!
-Object subclass: #TimeModelInitialization
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'TimeModelInitialization class' category: 'Chalten-TimeModel'!
-TimeModelInitialization class
-	instanceVariableNames: ''!
-
-!classDefinition: #TimeUnits category: 'Chalten-TimeModel'!
-Object subclass: #TimeUnits
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Chalten-TimeModel'!
-!classDefinition: 'TimeUnits class' category: 'Chalten-TimeModel'!
-TimeUnits class
-	instanceVariableNames: 'day hour minute second millisecond week month year'!
-
-!classDefinition: #InclusionRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #InclusionRule category: #'Chalten-TimeLineFilterModel'!
 Object subclass: #InclusionRule
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'InclusionRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'InclusionRule class' category: #'Chalten-TimeLineFilterModel'!
 InclusionRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #ArgentineLaw23555Rule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #ArgentineLaw23555Rule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #ArgentineLaw23555Rule
 	instanceVariableNames: 'dayOfMonth'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'ArgentineLaw23555Rule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'ArgentineLaw23555Rule class' category: #'Chalten-TimeLineFilterModel'!
 ArgentineLaw23555Rule class
 	instanceVariableNames: ''!
 
-!classDefinition: #CardinalDayMonthRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #CardinalDayMonthRule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #CardinalDayMonthRule
 	instanceVariableNames: 'day month cardinal'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'CardinalDayMonthRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'CardinalDayMonthRule class' category: #'Chalten-TimeLineFilterModel'!
 CardinalDayMonthRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #DayOfMonthRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #DayOfMonthRule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #DayOfMonthRule
 	instanceVariableNames: 'decoratedRule'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'DayOfMonthRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'DayOfMonthRule class' category: #'Chalten-TimeLineFilterModel'!
 DayOfMonthRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #IntervalConstrainedInclusionRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #IntervalConstrainedInclusionRule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #IntervalConstrainedInclusionRule
 	instanceVariableNames: 'interval decoratedRule'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'IntervalConstrainedInclusionRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'IntervalConstrainedInclusionRule class' category: #'Chalten-TimeLineFilterModel'!
 IntervalConstrainedInclusionRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #PluggableInclusionRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #PluggableInclusionRule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #PluggableInclusionRule
 	instanceVariableNames: 'block'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'PluggableInclusionRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'PluggableInclusionRule class' category: #'Chalten-TimeLineFilterModel'!
 PluggableInclusionRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #SpecificDayRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #SpecificDayRule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #SpecificDayRule
 	instanceVariableNames: 'decoratedRule'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'SpecificDayRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'SpecificDayRule class' category: #'Chalten-TimeLineFilterModel'!
 SpecificDayRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #SpecificObjectInclusionRule category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #SpecificObjectInclusionRule category: #'Chalten-TimeLineFilterModel'!
 InclusionRule subclass: #SpecificObjectInclusionRule
 	instanceVariableNames: 'object'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'SpecificObjectInclusionRule class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'SpecificObjectInclusionRule class' category: #'Chalten-TimeLineFilterModel'!
 SpecificObjectInclusionRule class
 	instanceVariableNames: ''!
 
-!classDefinition: #TimeLineFilterBehavior category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #TimeLineFilterBehavior category: #'Chalten-TimeLineFilterModel'!
 Object subclass: #TimeLineFilterBehavior
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'TimeLineFilterBehavior class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'TimeLineFilterBehavior class' category: #'Chalten-TimeLineFilterModel'!
 TimeLineFilterBehavior class
 	instanceVariableNames: ''!
 
-!classDefinition: #NegatedTimeLineFilter category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #NegatedTimeLineFilter category: #'Chalten-TimeLineFilterModel'!
 TimeLineFilterBehavior subclass: #NegatedTimeLineFilter
 	instanceVariableNames: 'originalTimeLineFilter'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'NegatedTimeLineFilter class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'NegatedTimeLineFilter class' category: #'Chalten-TimeLineFilterModel'!
 NegatedTimeLineFilter class
 	instanceVariableNames: ''!
 
-!classDefinition: #TimeLineFilter category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #TimeLineFilter category: #'Chalten-TimeLineFilterModel'!
 TimeLineFilterBehavior subclass: #TimeLineFilter
 	instanceVariableNames: 'inclusionSet name negatedTimeLineFilter'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'TimeLineFilter class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'TimeLineFilter class' category: #'Chalten-TimeLineFilterModel'!
 TimeLineFilter class
 	instanceVariableNames: ''!
 
-!classDefinition: #Universe category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #Universe category: #'Chalten-TimeLineFilterModel'!
 Object subclass: #Universe
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'Universe class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'Universe class' category: #'Chalten-TimeLineFilterModel'!
 Universe class
 	instanceVariableNames: ''!
 
-!classDefinition: #AllDatesUniverse category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #AllDatesUniverse category: #'Chalten-TimeLineFilterModel'!
 Universe subclass: #AllDatesUniverse
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'AllDatesUniverse class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'AllDatesUniverse class' category: #'Chalten-TimeLineFilterModel'!
 AllDatesUniverse class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #AllUniverse category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: #AllUniverse category: #'Chalten-TimeLineFilterModel'!
 Universe subclass: #AllUniverse
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModel'!
-!classDefinition: 'AllUniverse class' category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'AllUniverse class' category: #'Chalten-TimeLineFilterModel'!
 AllUniverse class
 	instanceVariableNames: 'uniqueInstance'!
 
-!classDefinition: #NaturalNumbersTestUniverse category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: #NaturalNumbersTestUniverse category: #'Chalten-TimeLineFilterModelTests'!
 Universe subclass: #NaturalNumbersTestUniverse
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Chalten-TimeLineFilterModelTests'!
-!classDefinition: 'NaturalNumbersTestUniverse class' category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'NaturalNumbersTestUniverse class' category: #'Chalten-TimeLineFilterModelTests'!
 NaturalNumbersTestUniverse class
 	instanceVariableNames: 'uniqueInstance'!
 
+!classDefinition: #GregorianTimespan category: #'Chalten-TimeModel'!
+Object subclass: #GregorianTimespan
+	instanceVariableNames: 'from duration'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianTimespan class' category: #'Chalten-TimeModel'!
+GregorianTimespan class
+	instanceVariableNames: ''!
 
-!FixedGregorianDate methodsFor: 'printing'!
-printOn: aStream
+!classDefinition: #TimeModelInitialization category: #'Chalten-TimeModel'!
+Object subclass: #TimeModelInitialization
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'TimeModelInitialization class' category: #'Chalten-TimeModel'!
+TimeModelInitialization class
+	instanceVariableNames: ''!
 
-	self month printOn: aStream.
-	aStream space.
-	dayNumber printOn: aStream.
-	aStream nextPut: $,.
-	aStream space.
-	self year number printOn: aStream! !
+!classDefinition: #TimeUnits category: #'Chalten-TimeModel'!
+Object subclass: #TimeUnits
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'TimeUnits class' category: #'Chalten-TimeModel'!
+TimeUnits class
+	instanceVariableNames: 'day hour minute second millisecond week month year'!
 
-!FilteredGregorianDate methodsFor: 'printing'!
-printOn: aStream
+!classDefinition: #DefinedByRules category: #'Chalten-TimeLineFilterModel'!
+Collection subclass: #DefinedByRules
+	instanceVariableNames: 'rules universe'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'DefinedByRules class' category: #'Chalten-TimeLineFilterModel'!
+DefinedByRules class
+	instanceVariableNames: ''!
 
-	date printOn: aStream! !
+!classDefinition: #TimeLineFilterStream category: #'Chalten-TimeLineFilterModel'!
+Stream subclass: #TimeLineFilterStream
+	instanceVariableNames: 'from current timeLineFilter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'TimeLineFilterStream class' category: #'Chalten-TimeLineFilterModel'!
+TimeLineFilterStream class
+	instanceVariableNames: ''!
 
-!RelativeGregorianDate methodsFor: 'printing'!
-printOn: aStream
+!classDefinition: #DateNotIncludedInTimeLineFilterException category: #'Chalten-TimeLineFilterModel'!
+Error subclass: #DateNotIncludedInTimeLineFilterException
+	instanceVariableNames: 'date timeLineFilter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'DateNotIncludedInTimeLineFilterException class' category: #'Chalten-TimeLineFilterModel'!
+DateNotIncludedInTimeLineFilterException class
+	instanceVariableNames: ''!
 
-	^self absoluteDate printOn: aStream! !
+!classDefinition: #NotIterateUniverseException category: #'Chalten-TimeLineFilterModel'!
+Error subclass: #NotIterateUniverseException
+	instanceVariableNames: 'universe'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'NotIterateUniverseException class' category: #'Chalten-TimeLineFilterModel'!
+NotIterateUniverseException class
+	instanceVariableNames: ''!
 
-!GregorianDateTime methodsFor: 'printing' stamp: 'HAW 1/15/2019 19:22:59'!
-printOn: aStream
+!classDefinition: #InvalidDayOfMonthException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidDayOfMonthException
+	instanceVariableNames: 'month dayNumber'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidDayOfMonthException class' category: #'Chalten-TimeModel'!
+InvalidDayOfMonthException class
+	instanceVariableNames: ''!
 
-	aStream 
-		print: date;
-		nextPutAll: ' at ';
-		print: timeOfDay.
-		! !
+!classDefinition: #InvalidGregorianDateException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidGregorianDateException
+	instanceVariableNames: 'dayNumber monthOfYear'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidGregorianDateException class' category: #'Chalten-TimeModel'!
+InvalidGregorianDateException class
+	instanceVariableNames: ''!
 
-!GregorianDay methodsFor: 'accessing'!
-name
+!classDefinition: #InvalidGregorianDayNameException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidGregorianDayNameException
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidGregorianDayNameException class' category: #'Chalten-TimeModel'!
+InvalidGregorianDayNameException class
+	instanceVariableNames: ''!
+
+!classDefinition: #InvalidGregorianDayNumberException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidGregorianDayNumberException
+	instanceVariableNames: 'dayNumber'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidGregorianDayNumberException class' category: #'Chalten-TimeModel'!
+InvalidGregorianDayNumberException class
+	instanceVariableNames: ''!
+
+!classDefinition: #InvalidGregorianMonthNameException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidGregorianMonthNameException
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidGregorianMonthNameException class' category: #'Chalten-TimeModel'!
+InvalidGregorianMonthNameException class
+	instanceVariableNames: ''!
+
+!classDefinition: #InvalidGregorianMonthNumberException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidGregorianMonthNumberException
+	instanceVariableNames: 'number'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidGregorianMonthNumberException class' category: #'Chalten-TimeModel'!
+InvalidGregorianMonthNumberException class
+	instanceVariableNames: ''!
+
+!classDefinition: #InvalidGregorianYearNumberException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidGregorianYearNumberException
+	instanceVariableNames: 'number'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidGregorianYearNumberException class' category: #'Chalten-TimeModel'!
+InvalidGregorianYearNumberException class
+	instanceVariableNames: ''!
+
+!classDefinition: #InvalidTimeOfDayException category: #'Chalten-TimeModel'!
+Error subclass: #InvalidTimeOfDayException
+	instanceVariableNames: 'time'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'InvalidTimeOfDayException class' category: #'Chalten-TimeModel'!
+InvalidTimeOfDayException class
+	instanceVariableNames: ''!
+
+!classDefinition: #PointInTime category: #'Chalten-TimeModel'!
+IntervalAwareMagnitude subclass: #PointInTime
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'PointInTime class' category: #'Chalten-TimeModel'!
+PointInTime class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianDate category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianDate
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianDate class' category: #'Chalten-TimeModel'!
+GregorianDate class
+	instanceVariableNames: ''!
+
+!classDefinition: #FilteredGregorianDate category: #'Chalten-TimeLineFilterModel'!
+GregorianDate subclass: #FilteredGregorianDate
+	instanceVariableNames: 'date timeLineFilter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'FilteredGregorianDate class' category: #'Chalten-TimeLineFilterModel'!
+FilteredGregorianDate class
+	instanceVariableNames: ''!
+
+!classDefinition: #RelativeGregorianDate category: #'Chalten-TimeLineFilterModel'!
+GregorianDate subclass: #RelativeGregorianDate
+	instanceVariableNames: 'timespan timeLineFilter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModel'!
+!classDefinition: 'RelativeGregorianDate class' category: #'Chalten-TimeLineFilterModel'!
+RelativeGregorianDate class
+	instanceVariableNames: ''!
+
+!classDefinition: #FixedGregorianDate category: #'Chalten-TimeModel'!
+GregorianDate subclass: #FixedGregorianDate
+	instanceVariableNames: 'dayNumber monthOfYear'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'FixedGregorianDate class' category: #'Chalten-TimeModel'!
+FixedGregorianDate class
+	instanceVariableNames: 'theBeginningOfTime theEndOfTime'!
+
+!classDefinition: #GregorianDateTime category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianDateTime
+	instanceVariableNames: 'timeOfDay date'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianDateTime class' category: #'Chalten-TimeModel'!
+GregorianDateTime class
+	instanceVariableNames: 'theBeginningOfTime theEndOfTime'!
+
+!classDefinition: #GregorianDay category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianDay
+	instanceVariableNames: 'name positionInWeek'
+	classVariableNames: 'Days MinusOneDay OneDay SevenDays ThirtyDays ThirtyOneDays ThreeHundredSixtyDays ThreeHundredSixtyFiveDays ThreeHundredSixtySixDays TwentyEightDays TwentyNineDays TwoDays ZeroDays'
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianDay class' category: #'Chalten-TimeModel'!
+GregorianDay class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianDayOfMonth category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianDayOfMonth
+	instanceVariableNames: 'month dayNumber'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianDayOfMonth class' category: #'Chalten-TimeModel'!
+GregorianDayOfMonth class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianMonth category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianMonth
+	instanceVariableNames: ''
+	classVariableNames: 'FourMonths Months OneMonth SixMonths ThreeMonths TwelveMonths TwoMonths ZeroMonths'
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianMonth class' category: #'Chalten-TimeModel'!
+GregorianMonth class
+	instanceVariableNames: ''!
+
+!classDefinition: #FebruaryGregorianMonth category: #'Chalten-TimeModel'!
+GregorianMonth subclass: #FebruaryGregorianMonth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'FebruaryGregorianMonth class' category: #'Chalten-TimeModel'!
+FebruaryGregorianMonth class
+	instanceVariableNames: 'uniqueInstance'!
+
+!classDefinition: #ThirtyDaysGregorianMonth category: #'Chalten-TimeModel'!
+GregorianMonth subclass: #ThirtyDaysGregorianMonth
+	instanceVariableNames: 'name number numberOfDaysFromJanuaryFirstInNonLeapYear numberOfDaysFromJanuaryFirst'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'ThirtyDaysGregorianMonth class' category: #'Chalten-TimeModel'!
+ThirtyDaysGregorianMonth class
+	instanceVariableNames: ''!
+
+!classDefinition: #ThirtyOneDaysGregorianMonth category: #'Chalten-TimeModel'!
+GregorianMonth subclass: #ThirtyOneDaysGregorianMonth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'ThirtyOneDaysGregorianMonth class' category: #'Chalten-TimeModel'!
+ThirtyOneDaysGregorianMonth class
+	instanceVariableNames: ''!
+
+!classDefinition: #JanuaryGregorianMonth category: #'Chalten-TimeModel'!
+ThirtyOneDaysGregorianMonth subclass: #JanuaryGregorianMonth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'JanuaryGregorianMonth class' category: #'Chalten-TimeModel'!
+JanuaryGregorianMonth class
+	instanceVariableNames: 'uniqueInstance'!
+
+!classDefinition: #NonSpecificThirtyOneDaysGregorianMonth category: #'Chalten-TimeModel'!
+ThirtyOneDaysGregorianMonth subclass: #NonSpecificThirtyOneDaysGregorianMonth
+	instanceVariableNames: 'name number numberOfDaysFromJanuaryFirstInNonLeapYear numberOfDaysFromJanuaryFirst'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'NonSpecificThirtyOneDaysGregorianMonth class' category: #'Chalten-TimeModel'!
+NonSpecificThirtyOneDaysGregorianMonth class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianMonthOfYear category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianMonthOfYear
+	instanceVariableNames: 'year month'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianMonthOfYear class' category: #'Chalten-TimeModel'!
+GregorianMonthOfYear class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianYear category: #'Chalten-TimeModel'!
+PointInTime subclass: #GregorianYear
+	instanceVariableNames: ''
+	classVariableNames: 'OneYear ZeroYears'
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianYear class' category: #'Chalten-TimeModel'!
+GregorianYear class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianLeapYear category: #'Chalten-TimeModel'!
+GregorianYear subclass: #GregorianLeapYear
+	instanceVariableNames: 'number numberOfDaysFromBaseDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianLeapYear class' category: #'Chalten-TimeModel'!
+GregorianLeapYear class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianNonLeapYear category: #'Chalten-TimeModel'!
+GregorianYear subclass: #GregorianNonLeapYear
+	instanceVariableNames: 'number numberOfDaysFromBaseDate'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'GregorianNonLeapYear class' category: #'Chalten-TimeModel'!
+GregorianNonLeapYear class
+	instanceVariableNames: ''!
+
+!classDefinition: #TimeOfDay category: #'Chalten-TimeModel'!
+PointInTime subclass: #TimeOfDay
+	instanceVariableNames: 'timeFromMidnight'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModel'!
+!classDefinition: 'TimeOfDay class' category: #'Chalten-TimeModel'!
+TimeOfDay class
+	instanceVariableNames: 'firstTimeOfDay lastTimeOfDay noon oneMillisecond oneSecond twentyFourHours zeroHours'!
+
+!classDefinition: #AllDatesUniverseTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #AllDatesUniverseTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'AllDatesUniverseTest class' category: #'Chalten-TimeLineFilterModelTests'!
+AllDatesUniverseTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #ArgentineLaw23555RuleTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #ArgentineLaw23555RuleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'ArgentineLaw23555RuleTest class' category: #'Chalten-TimeLineFilterModelTests'!
+ArgentineLaw23555RuleTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #CardinalDayMonthRuleTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #CardinalDayMonthRuleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'CardinalDayMonthRuleTest class' category: #'Chalten-TimeLineFilterModelTests'!
+CardinalDayMonthRuleTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #DayOfMonthRuleTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #DayOfMonthRuleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'DayOfMonthRuleTest class' category: #'Chalten-TimeLineFilterModelTests'!
+DayOfMonthRuleTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #DefinedByRulesTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #DefinedByRulesTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'DefinedByRulesTest class' category: #'Chalten-TimeLineFilterModelTests'!
+DefinedByRulesTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #FilteredGregorianDateTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #FilteredGregorianDateTest
+	instanceVariableNames: 'today defaultFilteredDate argentineTimeLineFilter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'FilteredGregorianDateTest class' category: #'Chalten-TimeLineFilterModelTests'!
+FilteredGregorianDateTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #IntervalConstrainedInclusionRuleTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #IntervalConstrainedInclusionRuleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'IntervalConstrainedInclusionRuleTest class' category: #'Chalten-TimeLineFilterModelTests'!
+IntervalConstrainedInclusionRuleTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #NegatedTimeLineFilterTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #NegatedTimeLineFilterTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'NegatedTimeLineFilterTest class' category: #'Chalten-TimeLineFilterModelTests'!
+NegatedTimeLineFilterTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #RelativeGregorianDateTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #RelativeGregorianDateTest
+	instanceVariableNames: 'relativeDate absoluteDate timeLineFilter'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'RelativeGregorianDateTest class' category: #'Chalten-TimeLineFilterModelTests'!
+RelativeGregorianDateTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #SpecificDayRuleTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #SpecificDayRuleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'SpecificDayRuleTest class' category: #'Chalten-TimeLineFilterModelTests'!
+SpecificDayRuleTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #SpecificObjectInclusionRuleTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #SpecificObjectInclusionRuleTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'SpecificObjectInclusionRuleTest class' category: #'Chalten-TimeLineFilterModelTests'!
+SpecificObjectInclusionRuleTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TimeLineFilterStreamTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #TimeLineFilterStreamTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'TimeLineFilterStreamTest class' category: #'Chalten-TimeLineFilterModelTests'!
+TimeLineFilterStreamTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TimeLineFilterTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #TimeLineFilterTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'TimeLineFilterTest class' category: #'Chalten-TimeLineFilterModelTests'!
+TimeLineFilterTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #UniverseTest category: #'Chalten-TimeLineFilterModelTests'!
+TestCase subclass: #UniverseTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeLineFilterModelTests'!
+!classDefinition: 'UniverseTest class' category: #'Chalten-TimeLineFilterModelTests'!
+UniverseTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #FebruaryGregorianMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #FebruaryGregorianMonthTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'FebruaryGregorianMonthTest class' category: #'Chalten-TimeModelTests'!
+FebruaryGregorianMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #FixedGregorianDateTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #FixedGregorianDateTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'FixedGregorianDateTest class' category: #'Chalten-TimeModelTests'!
+FixedGregorianDateTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianDateTimeTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianDateTimeTest
+	instanceVariableNames: 'december31Of2003 december31Of2003On23Hours59Minutes59Seconds januaryFirstOf2004 januaryFirstOf2004On00Hours00Minutes01Seconds januaryFirstOf2004On03Hours januaryFirstOf2004On23Hours59Minutes58Seconds januaryFirstOf2004On23Hours59Minutes59Seconds januarySecondOf2004 januarySecondOf2004On00Hours00Minutes01Seconds januarySecondOf2004On23Hours januarySecondOf2004On23Hours59Minutes59Seconds januaryThirdOf2004'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianDateTimeTest class' category: #'Chalten-TimeModelTests'!
+GregorianDateTimeTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianDayOfMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianDayOfMonthTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianDayOfMonthTest class' category: #'Chalten-TimeModelTests'!
+GregorianDayOfMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianDayTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianDayTest
+	instanceVariableNames: 'sunday monday thursday wednesday tuesday friday saturday'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianDayTest class' category: #'Chalten-TimeModelTests'!
+GregorianDayTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianMonthOfYearTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianMonthOfYearTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianMonthOfYearTest class' category: #'Chalten-TimeModelTests'!
+GregorianMonthOfYearTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianMonthTest
+	instanceVariableNames: 'january february march april may june july august september october november december'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianMonthTest class' category: #'Chalten-TimeModelTests'!
+GregorianMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianTimespanTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianTimespanTest
+	instanceVariableNames: 'januaryFirstOf2004 january31Of2004'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianTimespanTest class' category: #'Chalten-TimeModelTests'!
+GregorianTimespanTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #GregorianYearTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #GregorianYearTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'GregorianYearTest class' category: #'Chalten-TimeModelTests'!
+GregorianYearTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #JanuaryGregorianMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #JanuaryGregorianMonthTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'JanuaryGregorianMonthTest class' category: #'Chalten-TimeModelTests'!
+JanuaryGregorianMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #MoreThanOnePointInTimeIntervalStrategyTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #MoreThanOnePointInTimeIntervalStrategyTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'MoreThanOnePointInTimeIntervalStrategyTest class' category: #'Chalten-TimeModelTests'!
+MoreThanOnePointInTimeIntervalStrategyTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #NonSpecificThirtyOneDaysGregorianMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #NonSpecificThirtyOneDaysGregorianMonthTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'NonSpecificThirtyOneDaysGregorianMonthTest class' category: #'Chalten-TimeModelTests'!
+NonSpecificThirtyOneDaysGregorianMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #ThirtyDaysGregorianMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #ThirtyDaysGregorianMonthTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'ThirtyDaysGregorianMonthTest class' category: #'Chalten-TimeModelTests'!
+ThirtyDaysGregorianMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #ThirtyOneDaysGregorianMonthTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #ThirtyOneDaysGregorianMonthTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'ThirtyOneDaysGregorianMonthTest class' category: #'Chalten-TimeModelTests'!
+ThirtyOneDaysGregorianMonthTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TimeOfDayTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #TimeOfDayTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'TimeOfDayTest class' category: #'Chalten-TimeModelTests'!
+TimeOfDayTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TimeUnitsTest category: #'Chalten-TimeModelTests'!
+TestCase subclass: #TimeUnitsTest
+	instanceVariableNames: 'timeUnits'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Chalten-TimeModelTests'!
+!classDefinition: 'TimeUnitsTest class' category: #'Chalten-TimeModelTests'!
+TimeUnitsTest class
+	instanceVariableNames: ''!
+
+
+!PointInTimeIntervalStrategy methodsFor: 'enumerating'!
+advanceFrom: from by: by
+
+	^from next: by! !
+
+!PointInTimeIntervalStrategy methodsFor: 'enumerating'!
+advanceFrom: from steps: steps by: by
+
+	^from next: (steps * by)! !
+
+!DefaultPointInTimeIntervalStrategy methodsFor: 'enumerating'!
+stepsFrom: fromPointInTime to: toPointInTime by: aDistance
 	
-	^name! !
+	^(fromPointInTime distanceTo: toPointInTime) / aDistance! !
 
-!GregorianDay methodsFor: 'printing'!
-printOn: aStream
+!DefaultPointInTimeIntervalStrategy class methodsFor: 'initialization'!
+initialize
 
-	aStream nextPutAll: name! !
+	self initializeUniqueInstance! !
 
-!GregorianDayOfMonth methodsFor: 'printing'!
-printOn: aStream
+!DefaultPointInTimeIntervalStrategy class methodsFor: 'initialization'!
+initializeAfterLoad
 
-	month printOn: aStream.
-	aStream space.
-	dayNumber printOn: aStream! !
+	self initialize! !
 
-!GregorianMonth methodsFor: 'accessing'!
-name
+!DefaultPointInTimeIntervalStrategy class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := self basicNew! !
+
+!DefaultPointInTimeIntervalStrategy class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
+!MoreThanOnePointInTimeIntervalStrategy methodsFor: 'testing'!
+isValidIntervalFrom: aStart to: aStop by: aStep
+
+	^(self stepsFrom: aStart to: aStop by: aStep) > 0! !
+
+!MoreThanOnePointInTimeIntervalStrategy methodsFor: 'enumerating'!
+stepsFrom: fromPointInTime to: toPointInTime by: aDistance
 	
+	^(fromPointInTime distanceTo: toPointInTime) / aDistance! !
+
+!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'initialization'!
+initialize
+
+	self initializeUniqueInstance! !
+
+!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'initialization'!
+initializeAfterLoad
+
+	self initialize! !
+
+!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := self basicNew! !
+
+!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
+!RoundedTimelineIntervalStrategy methodsFor: 'enumerating'!
+stepsFrom: from to: to by: by
+
+	^by > 0
+		ifTrue: [ (from distanceTo: to) / by ]
+		ifFalse: [ (from distanceFrom: to) / by negated ]! !
+
+!RoundedTimelineIntervalStrategy class methodsFor: 'initialization'!
+initialize
+
+	self initializeUniqueInstance! !
+
+!RoundedTimelineIntervalStrategy class methodsFor: 'initialization'!
+initializeAfterLoad
+
+	self initialize! !
+
+!RoundedTimelineIntervalStrategy class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := self basicNew! !
+
+!RoundedTimelineIntervalStrategy class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
+!InclusionRule methodsFor: 'querying'!
+includes: anObject
+
 	self subclassResponsibility! !
-
-!GregorianMonth methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: self name! !
-
-!FebruaryGregorianMonth methodsFor: 'accessing'!
-name
-	
-	^GregorianMonth februaryName! !
-
-!ThirtyDaysGregorianMonth methodsFor: 'accessing'!
-name
-	
-	^name! !
-
-!JanuaryGregorianMonth methodsFor: 'accessing'!
-name
-	
-	^GregorianMonth januaryName! !
-
-!NonSpecificThirtyOneDaysGregorianMonth methodsFor: 'accessing'!
-name
-	
-	^name! !
-
-!GregorianMonthOfYear methodsFor: 'accessing'!
-name
-	
-	^month name! !
-
-!GregorianMonthOfYear methodsFor: 'printing'!
-printOn: aStream
-
-	month printOn: aStream.
-	aStream nextPutAll: ' of '.
-	year printOn: aStream! !
-
-!GregorianYear methodsFor: 'printing'!
-printOn: aStream
-
-	aStream nextPutAll: 'Year '.
-	self number printOn: aStream! !
-
-!TimeOfDay methodsFor: 'printing' stamp: 'HAW 11/14/2019 07:26:20'!
-printOn: aStream
-
-	self hours amount printOn: aStream.
-	aStream nextPut: $:.
-	self minutes amount printOn: aStream base: 10 nDigits: 2.
-	aStream nextPut: $:.
-	self seconds amount printOn: aStream base: 10 nDigits: 2.
-	! !
-
-!InvalidGregorianDayNameException methodsFor: 'accessing'!
-name
-
-	^name! !
-
-!InvalidGregorianMonthNameException methodsFor: 'accessing'!
-name
-
-	^name! !
-
-!GregorianTimespan methodsFor: 'printing'!
-printOn: aStream
-
-	duration printOn: aStream.
-	aStream nextPutAll: ' from '.
-	from printOn: aStream! !
 
 !ArgentineLaw23555Rule methodsFor: 'printing'!
 printOn: aStream
 
 	self dayOfMonth printOn: aStream.
 	aStream nextPutAll: ' transferable holiday by Argentine Law 23555'! !
+
+!ArgentineLaw23555Rule methodsFor: 'accessing'!
+dayOfMonth
+	
+	^dayOfMonth! !
+
+!ArgentineLaw23555Rule methodsFor: 'querying - private'!
+goToNextMondayIfNeeded: aGregorianDate 
+
+	^(self mustGoToNextMonday: aGregorianDate) 
+			ifTrue: [aGregorianDate nextDay: GregorianDay monday]
+			ifFalse: [aGregorianDate]! !
+
+!ArgentineLaw23555Rule methodsFor: 'querying - private'!
+goToPreviousMondayIfNeeded: aGregorianDate 
+
+	^(self mustGoToPreviousMonday: aGregorianDate) 
+			ifTrue: [aGregorianDate previousDay: GregorianDay monday]
+			ifFalse: [aGregorianDate]! !
+
+!ArgentineLaw23555Rule methodsFor: 'querying - private'!
+goToPreviousOrNextMonday: aGregorianDate 
+
+	| gregorianDate |
+	
+	gregorianDate := self goToPreviousMondayIfNeeded: aGregorianDate.
+	gregorianDate := self goToNextMondayIfNeeded: gregorianDate.
+	
+	^gregorianDate! !
+
+!ArgentineLaw23555Rule methodsFor: 'querying - private'!
+mustGoToNextMonday: aGregorianDate 
+
+	^aGregorianDate day = GregorianDay thursday or: [ aGregorianDate day = GregorianDay friday ]! !
+
+!ArgentineLaw23555Rule methodsFor: 'querying - private'!
+mustGoToPreviousMonday: aGregorianDate 
+
+	^aGregorianDate day = GregorianDay tuesday or: [ aGregorianDate day = GregorianDay wednesday ]! !
+
+!ArgentineLaw23555Rule methodsFor: 'querying'!
+includes: aGregorianDate 
+
+	| includedDate |
+	
+	includedDate := self dayOfMonth ofYear: aGregorianDate year.
+	includedDate := self goToPreviousOrNextMonday: includedDate.
+	
+	^aGregorianDate = includedDate! !
+
+!ArgentineLaw23555Rule methodsFor: 'initialization'!
+initializeDayOfMonth: aGregorianDayOfMonth
+
+	dayOfMonth := aGregorianDayOfMonth.
+! !
+
+!ArgentineLaw23555Rule class methodsFor: 'instance creating'!
+dayOfMonth: aGregorianDayOfMonth 
+
+	^self new initializeDayOfMonth: aGregorianDayOfMonth! !
+
+!ArgentineLaw23555Rule class methodsFor: 'instance creating'!
+monthNumber: aMonthNumber dayNumber: aDayNumber 
+
+	^self dayOfMonth: (GregorianDayOfMonth monthNumber: aMonthNumber dayNumber: aDayNumber)
+! !
 
 !CardinalDayMonthRule methodsFor: 'printing'!
 printOn: aStream
@@ -975,10 +1017,68 @@ printOn: aStream
 	aStream nextPutAll: ' of '.
 	self month printOn: aStream! !
 
+!CardinalDayMonthRule methodsFor: 'accessing'!
+cardinal
+
+	^cardinal! !
+
+!CardinalDayMonthRule methodsFor: 'accessing'!
+day
+
+	^day! !
+
+!CardinalDayMonthRule methodsFor: 'accessing'!
+month
+
+	^month! !
+
+!CardinalDayMonthRule methodsFor: 'querying'!
+includes: aGregorianDate
+
+	^aGregorianDate = ((month ofYear: aGregorianDate year) cardinal: cardinal day: day)
+! !
+
+!CardinalDayMonthRule methodsFor: 'initialization'!
+initializeCardinal: aNumber day: aGregorianDay month: aGregorianMonth
+
+	cardinal := aNumber.
+	day := aGregorianDay.
+	month := aGregorianMonth.
+! !
+
+!CardinalDayMonthRule class methodsFor: 'instance creating'!
+cardinal: aNumber day: aGregorianDay month: aGregorianMonth 
+ 
+	^self new 
+		initializeCardinal: aNumber
+		day: aGregorianDay
+		month: aGregorianMonth
+! !
+
 !DayOfMonthRule methodsFor: 'printing'!
 printOn: aStream
 
 	self decoratedRule printOn: aStream! !
+
+!DayOfMonthRule methodsFor: 'accessing'!
+decoratedRule
+
+	^decoratedRule! !
+
+!DayOfMonthRule methodsFor: 'querying'!
+includes: aGregorianDate 
+	
+	^decoratedRule includes: aGregorianDate dayOfMonth! !
+
+!DayOfMonthRule methodsFor: 'initialization'!
+initializeRule: anInclusionRule
+
+	decoratedRule := anInclusionRule! !
+
+!DayOfMonthRule class methodsFor: 'instance creation'!
+rule: anInclusionRule
+
+	^self new initializeRule: anInclusionRule! !
 
 !IntervalConstrainedInclusionRule methodsFor: 'printing' stamp: 'mx 4/2/2006 19:41'!
 printOn: aStream
@@ -990,10 +1090,91 @@ printOn: aStream
 	aStream nextPutAll: ' -> '.
 	decoratedRule printOn: aStream! !
 
+!IntervalConstrainedInclusionRule methodsFor: 'accessing'!
+decoratedRule
+
+	^decoratedRule! !
+
+!IntervalConstrainedInclusionRule methodsFor: 'accessing' stamp: 'mx 4/2/2006 19:41'!
+from
+
+	^interval first! !
+
+!IntervalConstrainedInclusionRule methodsFor: 'accessing'!
+interval
+
+	^interval! !
+
+!IntervalConstrainedInclusionRule methodsFor: 'accessing' stamp: 'mx 4/2/2006 19:42'!
+to
+
+	^interval last! !
+
+!IntervalConstrainedInclusionRule methodsFor: 'querying'!
+includes: anObject
+
+	^(self shouldHandle: anObject) and: [ self decoratedRule includes: anObject ]! !
+
+!IntervalConstrainedInclusionRule methodsFor: 'initialization'!
+initializeOn: anInterval apply: anInclusionRule 
+
+	interval := anInterval.
+	decoratedRule := anInclusionRule! !
+
+!IntervalConstrainedInclusionRule methodsFor: 'querying - private'!
+shouldHandle: aMagnitude
+
+	^interval includes: aMagnitude! !
+
+!IntervalConstrainedInclusionRule class methodsFor: 'instance creating'!
+from: aMagnitude to: anotherMagnitude  apply: anInclusionRule
+
+	^self on: (aMagnitude to: anotherMagnitude) apply: anInclusionRule! !
+
+!IntervalConstrainedInclusionRule class methodsFor: 'instance creating'!
+on: anInterval apply: anInclusionRule 
+
+	^self new initializeOn: anInterval apply: anInclusionRule! !
+
+!PluggableInclusionRule methodsFor: 'querying'!
+includes: anObject
+
+	^block value: anObject! !
+
+!PluggableInclusionRule methodsFor: 'initialization'!
+initializeBlock: aBlock 
+	
+	block := aBlock! !
+
+!PluggableInclusionRule class methodsFor: 'instance creation'!
+block: aBlock 
+	
+	^self new initializeBlock: aBlock! !
+
 !SpecificDayRule methodsFor: 'printing'!
 printOn: aStream
 
 	self decoratedRule printOn: aStream! !
+
+!SpecificDayRule methodsFor: 'accessing'!
+decoratedRule
+
+	^decoratedRule! !
+
+!SpecificDayRule methodsFor: 'querying'!
+includes: aGregorianDate 
+	
+	^decoratedRule includes: aGregorianDate day! !
+
+!SpecificDayRule methodsFor: 'initialization'!
+initializeRule: anInclusionRule
+
+	decoratedRule := anInclusionRule! !
+
+!SpecificDayRule class methodsFor: 'instance creation'!
+rule: anInclusionRule
+
+	^self new initializeRule: anInclusionRule! !
 
 !SpecificObjectInclusionRule methodsFor: 'printing'!
 printOn: aStream
@@ -1001,10 +1182,34 @@ printOn: aStream
 	aStream nextPutAll: 'Includes: '.
 	self object printOn: aStream! !
 
+!SpecificObjectInclusionRule methodsFor: 'querying'!
+includes: anObject
+
+	^object = anObject! !
+
+!SpecificObjectInclusionRule methodsFor: 'initialization'!
+initializeFor: anObject
+
+	object := anObject! !
+
+!SpecificObjectInclusionRule methodsFor: 'accessing'!
+object
+
+	^object! !
+
+!SpecificObjectInclusionRule class methodsFor: 'instance creation'!
+for: anObject
+
+	^self new initializeFor: anObject! !
+
 !TimeLineFilterBehavior methodsFor: 'printing'!
 name
 
 	self subclassResponsibility! !
+
+!TimeLineFilterBehavior methodsFor: 'printing'!
+namedPrintOn: aStream 
+	aStream nextPutAll: self name asString! !
 
 !TimeLineFilterBehavior methodsFor: 'printing'!
 printOn: aStream 
@@ -1012,25 +1217,1149 @@ printOn: aStream
 		ifTrue: [self unnamedPrintOn: aStream]
 		ifFalse: [self namedPrintOn: aStream]! !
 
+!TimeLineFilterBehavior methodsFor: 'printing'!
+unnamedPrintOn: aStream
+
+	aStream nextPutAll: 'unnamed time line filter'! !
+
+!TimeLineFilterBehavior methodsFor: 'enumerating' stamp: 'HAW 11/10/2021 21:20:59'!
+datesBetween: aGregorianDate and: anotherGregorianDate
+
+	^(aGregorianDate to: anotherGregorianDate) select: [:each | self includes: each]! !
+
+!TimeLineFilterBehavior methodsFor: 'enumerating'!
+next: aTimespan
+
+	| stream |
+	
+	stream := TimeLineFilterStream from: aTimespan from using: self.
+	stream skip: aTimespan duration.
+	^stream current! !
+
+!TimeLineFilterBehavior methodsFor: 'enumerating'!
+streamFrom: aGregorianDate 
+
+	^TimeLineFilterStream from: aGregorianDate using: self! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
+excludedFrom: aGregorianDate to: anotherGregorianDate
+
+	^self negated includedFrom: aGregorianDate to: anotherGregorianDate
+! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
+excludedIn: anInterval
+
+	^self negated includedIn: anInterval! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
+excludes: aGregorianDate
+
+	^self negated includes: aGregorianDate! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
+excludesAll: aCollection
+
+	^self negated includesAll: aCollection! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - included'!
+includedFrom: aGregorianDate to: anotherGregorianDate
+ 
+	^self includedIn: (aGregorianDate to: anotherGregorianDate)
+! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - included'!
+includedIn: anInterval
+
+	^anInterval select: [:each | self includes: each]! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - included'!
+includes: aGregorianDate
+	self subclassResponsibility! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - included'!
+includesAll: aCollection
+
+	^aCollection allSatisfy: [:each | self includes: each]! !
+
+!TimeLineFilterBehavior methodsFor: 'querying - included' stamp: 'HAW 11/10/2021 21:21:41'!
+numberOfDatesBetween: aGregorianDate and: anotherGregorianDate
+
+	^SimpleMeasure
+		amount: (self datesBetween: aGregorianDate and: anotherGregorianDate) size
+		unit: TimeUnits day! !
+
+!TimeLineFilterBehavior methodsFor: 'accessing'!
+negated
+	self subclassResponsibility! !
+
 !NegatedTimeLineFilter methodsFor: 'accessing'!
 name
 
 	^originalTimeLineFilter name! !
+
+!NegatedTimeLineFilter methodsFor: 'accessing'!
+negated
+	
+	^originalTimeLineFilter! !
+
+!NegatedTimeLineFilter methodsFor: 'querying - included'!
+includes: aGregorianDate
+	
+	^(originalTimeLineFilter includes: aGregorianDate) not! !
+
+!NegatedTimeLineFilter methodsFor: 'initialization'!
+initializeFor: aTimeLineFilter
+
+	originalTimeLineFilter := aTimeLineFilter! !
+
+!NegatedTimeLineFilter class methodsFor: 'instance creation'!
+for: aTimeLineFilter
+
+	^self new initializeFor: aTimeLineFilter! !
 
 !TimeLineFilter methodsFor: 'accessing'!
 name
 
 	^name! !
 
+!TimeLineFilter methodsFor: 'accessing'!
+negated
+
+	^negatedTimeLineFilter! !
+
+!TimeLineFilter methodsFor: 'accessing'!
+rules
+
+	^inclusionSet rules! !
+
+!TimeLineFilter methodsFor: 'comparing'!
+= anObject
+
+	^self == anObject or: [
+		self class = anObject class and: [
+			self name = anObject name
+		]
+	]! !
+
+!TimeLineFilter methodsFor: 'comparing'!
+hash
+
+	^name hash! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addArgentineLaw23555Rule: aGregorianDayOfMonth 
+	^self addRule: (self argentineLaw23555Rule: aGregorianDayOfMonth)! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addCardinal: aNumber day: aGregorianDay monthRule: aGregorianMonth 
+	^self addRule: (self 
+				cardinal: aNumber
+				day: aGregorianDay
+				monthRule: aGregorianMonth)! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addDateRule: aGregorianDate 
+	
+	^self addRule: (self dateRule: aGregorianDate)! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addDayOfMonthRule: aGregorianDayOfMonth 
+	
+	^self addRule: (self dayOfMonthRule: aGregorianDayOfMonth)! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addDayRule: aGregorianDay 
+
+	^self addRule: (self dayRule: aGregorianDay)
+	! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addRule: aRule for: anInterval
+
+	^self addRule: (self rule: aRule on: anInterval)
+! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules' stamp: 'HAW 3/25/2017 20:37:27'!
+addRule: aRule from: aGregorianDate
+
+	^self addRule: (self rule: aRule from: aGregorianDate to: FixedGregorianDate theEndOfTime)! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addRule: aRule from: aGregorianDate to: anotherGregorianDate
+
+	^self addRule: (self rule: aRule from: aGregorianDate to: anotherGregorianDate)! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addRules: aRuleCollection for: anIntervalOfDays
+
+	aRuleCollection do: [:each | self addRule: each for: anIntervalOfDays]! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules' stamp: 'HAW 3/25/2017 20:37:44'!
+addRules: aRuleCollection from: aGregorianDate
+
+	self addRules: aRuleCollection from: aGregorianDate to: FixedGregorianDate theEndOfTime! !
+
+!TimeLineFilter methodsFor: 'rules - adding specific rules'!
+addRules: aRuleCollection from: aGregorianDate to: anotherGregorianDate
+
+	self addRules: aRuleCollection for: (aGregorianDate to: anotherGregorianDate)! !
+
+!TimeLineFilter methodsFor: 'rules - adding generic rules'!
+addRule: anInclusionRule
+
+	^inclusionSet addRule: anInclusionRule.
+! !
+
+!TimeLineFilter methodsFor: 'rules - adding generic rules'!
+addRules: aCollectionOfInclusionRules
+
+	^inclusionSet addRules: aCollectionOfInclusionRules.
+! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+argentineLaw23555Rule: aGregorianDayOfMonth 
+	^self class argentineLaw23555Rule: aGregorianDayOfMonth! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+cardinal: aNumber day: aGregorianDay monthRule: aGregorianMonth 
+	^self class 
+		cardinal: aNumber
+		day: aGregorianDay
+		monthRule: aGregorianMonth! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+dateRule: aGregorianDate 
+
+	^self class dateRule: aGregorianDate! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+dayOfMonthRule: aGregorianDayOfMonth
+
+	^self class dayOfMonthRule: aGregorianDayOfMonth
+! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+dayRule: aGregorianDay
+
+	^self class dayRule: aGregorianDay! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+rule: anInclusionRule from: aGregorianDate to: anotherGregorianDate
+
+	^self class rule: anInclusionRule from: aGregorianDate to: anotherGregorianDate! !
+
+!TimeLineFilter methodsFor: 'rules - creating'!
+rule: anInclusionRule on: anInterval
+
+	^self class rule: anInclusionRule on: anInterval! !
+
+!TimeLineFilter methodsFor: 'querying - included'!
+includes: aGregorianDate
+
+	^inclusionSet includes: aGregorianDate! !
+
+!TimeLineFilter methodsFor: 'initialization'!
+initialize
+
+	inclusionSet := DefinedByRules for: AllDatesUniverse new.
+	negatedTimeLineFilter := NegatedTimeLineFilter for: self! !
+
+!TimeLineFilter methodsFor: 'initialization'!
+initializeNamed: aName
+
+	name := aName! !
+
+!TimeLineFilter methodsFor: 'rules - removing'!
+removeAllRules
+
+	^inclusionSet removeAllRules! !
+
+!TimeLineFilter methodsFor: 'rules - removing'!
+removeRule: anInclusionRule
+
+	^inclusionSet removeRule: anInclusionRule! !
+
+!TimeLineFilter methodsFor: 'querying - rules'!
+rulesThatInclude: aGregorianDate
+
+	^inclusionSet rulesThatInclude: aGregorianDate! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+argentineLaw23555Rule: aGregorianDayOfMonth 
+	^ArgentineLaw23555Rule dayOfMonth: aGregorianDayOfMonth! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+cardinal: aNumber day: aGregorianDay monthRule: aGregorianMonth 
+
+	^CardinalDayMonthRule 
+		cardinal: aNumber
+		day: aGregorianDay
+		month: aGregorianMonth.
+! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+dateRule: aGregorianDate 
+
+	^SpecificObjectInclusionRule for: aGregorianDate.
+! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+dayOfMonthRule: aGregorianDayOfMonth
+
+	^DayOfMonthRule rule: (SpecificObjectInclusionRule for: aGregorianDayOfMonth)! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+dayRule: aGregorianDay
+
+	^SpecificDayRule rule: (SpecificObjectInclusionRule for: aGregorianDay)! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+rule: anInclusionRule from: aGregorianDate to: anotherGregorianDate
+
+	^self rule: anInclusionRule on: (aGregorianDate to: anotherGregorianDate)! !
+
+!TimeLineFilter class methodsFor: 'rules - creating'!
+rule: anInclusionRule on: anInterval
+
+	^IntervalConstrainedInclusionRule on: anInterval apply: anInclusionRule! !
+
+!TimeLineFilter class methodsFor: 'instance creation'!
+fromString: aString
+
+	^self named: aString! !
+
+!TimeLineFilter class methodsFor: 'instance creation'!
+named: aName
+
+	^self new initializeNamed: aName! !
+
+!TimeLineFilter class methodsFor: 'instance creation'!
+new
+	
+	^super new initialize! !
+
+!Universe methodsFor: 'iterating'!
+do: aBlock 
+	
+	self subclassResponsibility! !
+
+!Universe methodsFor: 'querying'!
+includes: anObject
+
+	self subclassResponsibility! !
+
 !AllDatesUniverse methodsFor: 'printing'!
 printOn: aStream
 
 	aStream nextPutAll: 'Every Days'! !
 
+!AllDatesUniverse methodsFor: 'iterating'!
+do: aBlock 
+	
+	^NotIterateUniverseException signalUniverse: self! !
+
+!AllDatesUniverse methodsFor: 'accessing' stamp: 'HAW 3/25/2017 20:36:23'!
+from
+
+	^FixedGregorianDate theBeginningOfTime
+	! !
+
+!AllDatesUniverse methodsFor: 'accessing' stamp: 'HAW 3/25/2017 20:36:23'!
+to
+
+	^FixedGregorianDate theEndOfTime
+	! !
+
+!AllDatesUniverse methodsFor: 'querying'!
+includes: anObject
+
+	^anObject isGregorianDate! !
+
+!AllDatesUniverse class methodsFor: 'initialization'!
+initialize
+
+	self initializeUniqueInstance! !
+
+!AllDatesUniverse class methodsFor: 'initialization'!
+initializeAfterLoad
+
+	self initialize! !
+
+!AllDatesUniverse class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := self basicNew! !
+
+!AllDatesUniverse class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
+!AllUniverse methodsFor: 'iterating'!
+do: aBlock 
+	
+	^NotIterateUniverseException signalUniverse: self! !
+
+!AllUniverse methodsFor: 'querying'!
+includes: anObject
+
+	^true! !
+
+!AllUniverse class methodsFor: 'initialization'!
+initialize
+
+	self initializeUniqueInstance! !
+
+!AllUniverse class methodsFor: 'initialization'!
+initializeAfterLoad
+
+	self initialize! !
+
+!AllUniverse class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := self basicNew! !
+
+!AllUniverse class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
 !NaturalNumbersTestUniverse methodsFor: 'printing'!
 printOn: aStream
 
 	aStream nextPutAll: 'Natural Numbers'! !
+
+!NaturalNumbersTestUniverse methodsFor: 'iterating'!
+do: aBlock 
+	
+	^NotIterateUniverseException signalUniverse: self! !
+
+!NaturalNumbersTestUniverse methodsFor: 'querying'!
+includes: anObject
+
+	^anObject isInteger! !
+
+!NaturalNumbersTestUniverse class methodsFor: 'initialization'!
+initialize
+
+	self initializeUniqueInstance! !
+
+!NaturalNumbersTestUniverse class methodsFor: 'initialization'!
+initializeAfterLoad
+
+	self initialize! !
+
+!NaturalNumbersTestUniverse class methodsFor: 'initialization'!
+initializeUniqueInstance
+
+	uniqueInstance := self basicNew! !
+
+!NaturalNumbersTestUniverse class methodsFor: 'instance creation'!
+new
+
+	^uniqueInstance! !
+
+!GregorianTimespan methodsFor: 'printing'!
+printOn: aStream
+
+	duration printOn: aStream.
+	aStream nextPutAll: ' from '.
+	from printOn: aStream! !
+
+!GregorianTimespan methodsFor: 'comparing'!
+= anObject
+
+	^self class = anObject class
+		and: [ from = anObject from 
+		and: [ duration = anObject duration ]]! !
+
+!GregorianTimespan methodsFor: 'comparing'!
+hash
+
+	^from hash bitXor: duration hash! !
+
+!GregorianTimespan methodsFor: 'converting' stamp: 'HAW 3/25/2017 20:46:07'!
+asInterval
+
+	^ArithmeticObjectInterval
+		from: from
+		to: self to
+		by: (duration unit with: 1)
+		intervalStrategy: DefaultPointInTimeIntervalStrategy new.! !
+
+!GregorianTimespan methodsFor: 'accessing'!
+duration
+
+	^duration! !
+
+!GregorianTimespan methodsFor: 'accessing'!
+from
+
+	^from! !
+
+!GregorianTimespan methodsFor: 'accessing'!
+to
+	
+	^from next: duration! !
+
+!GregorianTimespan methodsFor: 'initialization'!
+initializeFrom: aGregorianDate duration: aTimeMeasure
+
+	from := aGregorianDate.
+	duration := aTimeMeasure! !
+
+!GregorianTimespan methodsFor: 'evaluating'!
+value
+
+	^self class from: from value duration: duration! !
+
+!GregorianTimespan class methodsFor: 'instance creation'!
+from: aGregorianDate duration: aTimeMeasure
+
+	^self new initializeFrom: aGregorianDate duration: aTimeMeasure
+
+! !
+
+!GregorianTimespan class methodsFor: 'instance creation'!
+fromInterval: anInterval
+
+	^self from: anInterval from duration: (anInterval from distanceTo: anInterval to)! !
+
+!TimeModelInitialization class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 20:36:23'!
+initialize
+
+	"Everything is initialized here because there are dependencies of how the objects are initialized.
+	For that reason the #initialize method of each class cannot be used."
+
+	TimeUnits initializeTimeUnits.
+	FebruaryGregorianMonth initializeUniqueInstance.
+	JanuaryGregorianMonth initializeUniqueInstance.
+	GregorianDay initializeCommonObjects.
+	GregorianMonth initializeCommonObjects.
+	GregorianYear initializeCommonObjects.
+	FixedGregorianDate initializeTheBeginningAndTheEndOfTime.
+	TimeOfDay initializeCommonObjects.
+	GregorianDateTime initializeTheBeginningAndTheEndOfTime! !
+
+!TimeModelInitialization class methodsFor: 'initialization'!
+initializeAfterLoad
+
+	self initialize! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+allUnits
+	
+	^OrderedCollection new
+		add: day;
+		add: hour;
+		add: minute;
+		add: second;
+		add: millisecond;
+		add: week;
+		add: month;
+		add: year;
+		yourself.! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+day
+	
+	^day! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+hour
+	
+	^hour! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+millisecond
+	
+	^millisecond! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+minute
+
+	^minute! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+month
+	
+	^month! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+second
+
+	^second! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+week
+
+	^week! !
+
+!TimeUnits class methodsFor: 'accessing - units'!
+year
+	
+	^year! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeDay
+
+	day := BaseUnit named: 'day'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeHour
+
+	hour := ProportionalDerivedUnit 
+		baseUnit: day 
+		conversionFactor: 1/24
+		named: 'hour'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeMillisecond
+
+	millisecond := ProportionalDerivedUnit 
+		baseUnit: day 
+		conversionFactor: 1/(1000*60*60*24)
+		named: 'millisecond'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeMinute
+
+	minute := ProportionalDerivedUnit 
+		baseUnit: day 
+		conversionFactor: 1/(24*60)
+		named: 'minute'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeMonth
+
+	month := BaseUnit nameForOne: 'month' nameForMany: 'months'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeSecond
+
+	second := ProportionalDerivedUnit 
+		baseUnit: day 
+		conversionFactor: 1/(24*60*60)
+		named: 'second'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeTimeUnits
+
+	self initializeDay.
+	self initializeMillisecond.
+	self initializeSecond.
+	self initializeMinute.
+	self initializeHour.
+	self initializeWeek.
+	self initializeMonth.
+	self initializeYear
+! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeWeek
+
+	week := ProportionalDerivedUnit 
+		baseUnit: day 
+		conversionFactor: GregorianDay amountOfDaysPerWeek
+		named: 'week'! !
+
+!TimeUnits class methodsFor: 'initialization'!
+initializeYear
+
+	year := ProportionalDerivedUnit 
+		baseUnit: month 
+		conversionFactor:  GregorianMonth amountOfMonthsPerYear
+		named: 'year'! !
+
+!TimeUnits class methodsFor: 'initialization' stamp: 'HAW 8/22/2017 11:59:11'!
+installUnitsAsGlobals
+
+	self allUnits do: [ :aUnit | Smalltalk at: aUnit name asSymbol put: aUnit ]	! !
+
+!DefinedByRules methodsFor: 'adding/removing'!
+add: newObject
+
+	Error signal: 'To add elements is not allowed by ', self class name! !
+
+!DefinedByRules methodsFor: 'adding/removing'!
+remove: oldObject ifAbsent: anExceptionBlock
+
+	Error signal: 'To remove elements is not allowed by ', self class name! !
+
+!DefinedByRules methodsFor: 'add/removing rules'!
+addRule: anInclusionRule
+
+	^rules add: anInclusionRule
+	! !
+
+!DefinedByRules methodsFor: 'add/removing rules'!
+addRules: aCollection 
+
+	^rules addAll: aCollection.! !
+
+!DefinedByRules methodsFor: 'add/removing rules' stamp: 'mx 4/2/2006 19:27'!
+removeAllRules
+	
+	^rules removeAll: rules copy! !
+
+!DefinedByRules methodsFor: 'add/removing rules'!
+removeRule: anInclusionRule
+
+	^rules remove: anInclusionRule
+! !
+
+!DefinedByRules methodsFor: 'iterating'!
+do: aBlock 
+	
+	universe do: [ :anObject | (self includes: anObject) ifTrue: [ aBlock value: anObject ] ]! !
+
+!DefinedByRules methodsFor: 'querying - excluded'!
+excludedFrom: aMagnitude to: anotherMagnitude
+
+	^self excludedIn: (aMagnitude to: anotherMagnitude)
+	
+! !
+
+!DefinedByRules methodsFor: 'querying - excluded'!
+excludedIn: anInterval
+
+	^anInterval select: [ :each | self excludes: each ]! !
+
+!DefinedByRules methodsFor: 'querying - excluded'!
+excludes: anObject
+
+	^(self includes: anObject) not! !
+
+!DefinedByRules methodsFor: 'querying - excluded'!
+excludesAll: aCollection
+
+	^aCollection allSatisfy: [:each | self excludes: each]! !
+
+!DefinedByRules methodsFor: 'querying - included'!
+includedFrom: aMagnitude to: anotherMagnitude
+ 
+	^self includedIn: (aMagnitude to: anotherMagnitude)! !
+
+!DefinedByRules methodsFor: 'querying - included'!
+includedIn: anInterval
+
+	^anInterval select: [:each | self includes: each]! !
+
+!DefinedByRules methodsFor: 'querying - included'!
+includes: anObject
+
+	^(universe includes: anObject ) and: [rules anySatisfy: [ :anInclusionRule | anInclusionRule includes: anObject ]]! !
+
+!DefinedByRules methodsFor: 'querying - included'!
+includesAll: aCollection
+
+	^aCollection allSatisfy: [:anObject | self includes: anObject]! !
+
+!DefinedByRules methodsFor: 'initialization'!
+initializeFor: aUniverse
+	
+	rules := OrderedCollection new.
+	universe := aUniverse! !
+
+!DefinedByRules methodsFor: 'testing'!
+isEmpty
+	"Only for performance"
+	
+	self do: [ :anObject | ^false ].
+	^true! !
+
+!DefinedByRules methodsFor: 'testing'!
+notEmpty
+	"Only for performance"
+	
+	^self isEmpty not! !
+
+!DefinedByRules methodsFor: 'accessing'!
+rules
+
+	^rules copy! !
+
+!DefinedByRules methodsFor: 'accessing'!
+size
+
+	^self inject: 0 into: [ :size :anObject | size + 1 ].! !
+
+!DefinedByRules methodsFor: 'accessing'!
+species
+
+	^OrderedCollection! !
+
+!DefinedByRules methodsFor: 'accessing'!
+universe
+
+	^universe! !
+
+!DefinedByRules methodsFor: 'querying - rules'!
+rulesThatInclude: anObject
+
+	^rules select: [ :anInclusionRule | anInclusionRule includes: anObject ]
+! !
+
+!DefinedByRules class methodsFor: 'instance creating'!
+for: aUniverse 
+
+	^self new initializeFor: aUniverse! !
+
+!DefinedByRules class methodsFor: 'instance creating'!
+forAllUniverse
+
+	^(self for: AllUniverse new)
+		addRule: (PluggableInclusionRule block: [:anObject | true]);
+		yourself! !
+
+!TimeLineFilterStream methodsFor: 'querying'!
+atEnd
+	
+	^false! !
+
+!TimeLineFilterStream methodsFor: 'accessing'!
+current
+
+	^current! !
+
+!TimeLineFilterStream methodsFor: 'initialization'!
+initializeFrom: aGregorianDate using: aTimeLineFilter
+
+	from := aGregorianDate.
+	timeLineFilter := aTimeLineFilter.
+	self reset! !
+
+!TimeLineFilterStream methodsFor: 'enumerating'!
+next
+	
+	current := self peek.	
+	^current.
+! !
+
+!TimeLineFilterStream methodsFor: 'enumerating'!
+peek
+	
+	| nextDate |
+	
+	nextDate := current.
+	[ nextDate := nextDate next.
+	(timeLineFilter includes: nextDate) ] whileFalse.
+
+	^nextDate! !
+
+!TimeLineFilterStream methodsFor: 'enumerating'!
+peekPrevious
+	
+	| nextDate |
+	
+	nextDate := current.
+	[ nextDate := nextDate previous.
+	(timeLineFilter includes: nextDate) ] whileFalse.
+
+	^nextDate! !
+
+!TimeLineFilterStream methodsFor: 'enumerating'!
+previous
+	
+	current := self peekPrevious.	
+	^current.
+! !
+
+!TimeLineFilterStream methodsFor: 'enumerating'!
+reset
+	current := from.
+	! !
+
+!TimeLineFilterStream methodsFor: 'enumerating'!
+skip: aNumberOfDays
+
+	| daysToSkip |
+	
+	daysToSkip := (aNumberOfDays convertTo: TimeUnits day) amount.
+	daysToSkip > 0 
+		ifTrue: [ daysToSkip timesRepeat: [ self next ] ]
+		ifFalse: [ daysToSkip negated timesRepeat: [ self previous ] ]! !
+
+!TimeLineFilterStream class methodsFor: 'instance creation'!
+from: aGregorianDate using: aTimeLineFilter
+
+	^self new initializeFrom: aGregorianDate using: aTimeLineFilter! !
+
+!TimeLineFilterStream class methodsFor: 'instance creation' stamp: 'mx 4/2/2006 19:33'!
+new
+
+	^self basicNew! !
+
+!DateNotIncludedInTimeLineFilterException methodsFor: 'accessing'!
+date
+
+	^date! !
+
+!DateNotIncludedInTimeLineFilterException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:33:59'!
+description
+
+	^'{1} is not included in the {2} time line filter' format: { date .timeLineFilter }! !
+
+!DateNotIncludedInTimeLineFilterException methodsFor: 'accessing'!
+timeLineFilter
+
+	^timeLineFilter! !
+
+!DateNotIncludedInTimeLineFilterException methodsFor: 'initialization'!
+initializeDate: aDate timeLineFilter: aTimeLineFilter 
+	date := aDate.
+	timeLineFilter := aTimeLineFilter! !
+
+!DateNotIncludedInTimeLineFilterException class methodsFor: 'instance creation'!
+date: aDate timeLineFilter: aTimeLineFilter 
+	^self new initializeDate: aDate timeLineFilter: aTimeLineFilter! !
+
+!DateNotIncludedInTimeLineFilterException class methodsFor: 'signaling'!
+signalDate: aDate timeLineFilter: aTimeLineFilter 
+	(self date: aDate timeLineFilter: aTimeLineFilter) signal! !
+
+!NotIterateUniverseException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:33:05'!
+description
+
+	^'The universe {1} can''t be iterated' format: { universe }! !
+
+!NotIterateUniverseException methodsFor: 'accessing'!
+universe
+
+	^universe! !
+
+!NotIterateUniverseException methodsFor: 'initialization'!
+initializeUniverse: anUniverse
+
+	universe := anUniverse.! !
+
+!NotIterateUniverseException class methodsFor: 'signaling'!
+signalUniverse: anUniverse
+
+	(self universe: anUniverse) signal! !
+
+!NotIterateUniverseException class methodsFor: 'instance creation'!
+universe: anUniverse
+
+	^self new initializeUniverse: anUniverse! !
+
+!InvalidDayOfMonthException methodsFor: 'accessing'!
+dayNumber
+
+	^dayNumber! !
+
+!InvalidDayOfMonthException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:19:57'!
+description
+
+	^'Day of month {1} invalid for {2}' format: { dayNumber .month }! !
+
+!InvalidDayOfMonthException methodsFor: 'accessing'!
+month
+
+	^month! !
+
+!InvalidDayOfMonthException methodsFor: 'initialization'!
+initializeMonth: aMonth dayNumber: aDayNumber
+
+	month := aMonth.
+	dayNumber := aDayNumber.! !
+
+!InvalidDayOfMonthException class methodsFor: 'instance creation'!
+month: aMonth dayNumber: aDayNumber
+
+	^self new initializeMonth: aMonth dayNumber: aDayNumber! !
+
+!InvalidDayOfMonthException class methodsFor: 'signaling'!
+signalMonth: aMonth dayNumber: aDayNumber
+
+	(self month: aMonth dayNumber: aDayNumber) signal! !
+
+!InvalidGregorianDateException methodsFor: 'accessing'!
+dayNumber
+	^dayNumber! !
+
+!InvalidGregorianDateException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:09:45'!
+description
+
+	^'The day {1} is invalid for the month {2}' format: { dayNumber .monthOfYear }! !
+
+!InvalidGregorianDateException methodsFor: 'accessing'!
+monthOfYear
+	^monthOfYear! !
+
+!InvalidGregorianDateException methodsFor: 'initialization'!
+initializeMonthOfYear: aGregorianMonth dayNumber: aDayNumber
+
+	monthOfYear := aGregorianMonth.
+	dayNumber := aDayNumber.! !
+
+!InvalidGregorianDateException class methodsFor: 'instance creation'!
+monthOfYear: aGregorianMonth dayNumber: aDayNumber
+
+	^self new initializeMonthOfYear: aGregorianMonth dayNumber: aDayNumber! !
+
+!InvalidGregorianDateException class methodsFor: 'signaling'!
+signalMonth: aGregorianMonth dayNumber: aDayNumber
+
+	^(self monthOfYear: aGregorianMonth dayNumber: aDayNumber) signal! !
+
+!InvalidGregorianDayNameException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:20:56'!
+description
+
+	^'{1} is an invalid name for a day' format: { name }! !
+
+!InvalidGregorianDayNameException methodsFor: 'accessing'!
+name
+
+	^name! !
+
+!InvalidGregorianDayNameException methodsFor: 'initialization'!
+initializeName: aName
+
+	name := aName.! !
+
+!InvalidGregorianDayNameException class methodsFor: 'instance creation'!
+name: aName
+
+	^self new initializeName: aName! !
+
+!InvalidGregorianDayNameException class methodsFor: 'signaling'!
+signalName: aName
+
+	(self name: aName) signal! !
+
+!InvalidGregorianDayNumberException methodsFor: 'accessing'!
+dayNumber
+
+	^dayNumber! !
+
+!InvalidGregorianDayNumberException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:20:22'!
+description
+
+	^'The number {1} is invalid as a day of a week' format: { dayNumber }! !
+
+!InvalidGregorianDayNumberException methodsFor: 'initialization'!
+initializeDayNumber: aDayNumber
+
+	dayNumber := aDayNumber.! !
+
+!InvalidGregorianDayNumberException class methodsFor: 'instance creation'!
+dayNumber: aDayNumber
+
+	^self new initializeDayNumber: aDayNumber! !
+
+!InvalidGregorianDayNumberException class methodsFor: 'signaling'!
+signalDayNumber: aDayNumber
+
+	(self dayNumber: aDayNumber) signal! !
+
+!InvalidGregorianMonthNameException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:21:29'!
+description
+
+	^'{1} is an invalid name for a month' format: { name }! !
+
+!InvalidGregorianMonthNameException methodsFor: 'accessing'!
+name
+
+	^name! !
+
+!InvalidGregorianMonthNameException methodsFor: 'initialization'!
+initializeName: aName
+
+	name := aName.! !
+
+!InvalidGregorianMonthNameException class methodsFor: 'instance creation'!
+name: aName
+
+	^self new initializeName: aName! !
+
+!InvalidGregorianMonthNameException class methodsFor: 'signaling'!
+signalName: aName
+
+	(self name: aName) signal! !
+
+!InvalidGregorianMonthNumberException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:10:03'!
+description
+
+	^'{1} is an invalid number for a month' format: { number }! !
+
+!InvalidGregorianMonthNumberException methodsFor: 'accessing'!
+number
+
+	^number! !
+
+!InvalidGregorianMonthNumberException methodsFor: 'initialization'!
+initializeNumber: aNumber
+
+	number := aNumber! !
+
+!InvalidGregorianMonthNumberException class methodsFor: 'instance creation'!
+number: aNumber
+
+	^self new initializeNumber: aNumber! !
+
+!InvalidGregorianMonthNumberException class methodsFor: 'signaling'!
+signalNumber: aNumber
+
+	(self number: aNumber) signal! !
+
+!InvalidGregorianYearNumberException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:10:41'!
+description
+
+	^'{1} is an invalid number for a year' format: { number }! !
+
+!InvalidGregorianYearNumberException methodsFor: 'accessing'!
+number
+
+	^number! !
+
+!InvalidGregorianYearNumberException methodsFor: 'initialization'!
+initializeNumber: aNumber
+
+	number := aNumber! !
+
+!InvalidGregorianYearNumberException class methodsFor: 'instance creation'!
+number: aNumber
+
+	^self new initializeNumber: aNumber! !
+
+!InvalidGregorianYearNumberException class methodsFor: 'signaling'!
+signalNumber: aNumber
+
+	(self number: aNumber) signal! !
+
+!InvalidTimeOfDayException methodsFor: 'accessing' stamp: 'HAW 12/17/2018 18:27:06'!
+description
+
+	| timeToShow |
+	
+	timeToShow := time unit = TimeUnits day 
+		ifTrue: [ (time convertTo: TimeUnits hour) asFloatAmount ]
+		ifFalse: [ time ].
+		
+	^'The time {1} is invalid for one day' format: { timeToShow }! !
+
+!InvalidTimeOfDayException methodsFor: 'accessing'!
+time
+
+	^time! !
+
+!InvalidTimeOfDayException methodsFor: 'initialization'!
+initializeTime: aTime
+
+	time := aTime.! !
+
+!InvalidTimeOfDayException class methodsFor: 'signaling'!
+signalTime: aTime
+
+	(self time: aTime) signal! !
+
+!InvalidTimeOfDayException class methodsFor: 'instance creation'!
+time: aTime
+
+	^self new initializeTime: aTime! !
 
 !PointInTime methodsFor: 'querying' stamp: 'HAW 1/16/2019 22:48:29'!
 absoluteDistanceTo: aPointInTime
@@ -1354,6 +2683,301 @@ to: aGregorianDate everyDayOfMonths: aCollectionOfGregorianDayOfMonth
 
 	^(self to: aGregorianDate) select: [ :aDate | aCollectionOfGregorianDayOfMonth includes: aDate dayOfMonth ]! !
 
+!FilteredGregorianDate methodsFor: 'printing'!
+printOn: aStream
+
+	date printOn: aStream! !
+
+!FilteredGregorianDate methodsFor: 'magnitude protocol'!
+< aDate
+
+	^date < aDate value! !
+
+!FilteredGregorianDate methodsFor: 'comparing'!
+= anObject
+
+	^date = anObject! !
+
+!FilteredGregorianDate methodsFor: 'comparing'!
+hash
+
+	^date hash! !
+
+!FilteredGregorianDate methodsFor: 'accessing'!
+date
+	
+	^date! !
+
+!FilteredGregorianDate methodsFor: 'accessing'!
+dayNumber
+
+	^date dayNumber! !
+
+!FilteredGregorianDate methodsFor: 'accessing'!
+dayOfMonth
+
+	^date dayOfMonth! !
+
+!FilteredGregorianDate methodsFor: 'accessing'!
+month
+	
+	^date month! !
+
+!FilteredGregorianDate methodsFor: 'accessing'!
+monthOfYear
+	
+	^date monthOfYear! !
+
+!FilteredGregorianDate methodsFor: 'accessing'!
+year
+
+	^date year! !
+
+!FilteredGregorianDate methodsFor: 'accessing - days'!
+day
+	
+	^date day! !
+
+!FilteredGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysFromBaseDate
+
+	^date numberOfDaysFromBaseDate! !
+
+!FilteredGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysFromBeginningOfMonth
+
+	^date numberOfDaysFromBeginningOfMonth! !
+
+!FilteredGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysFromJanuaryFirst
+
+	^date numberOfDaysFromJanuaryFirst! !
+
+!FilteredGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysToEndOfMonth
+
+	^date numberOfDaysToEndOfMonth! !
+
+!FilteredGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysToEndOfYear
+
+	^date numberOfDaysToEndOfYear! !
+
+!FilteredGregorianDate methodsFor: 'initialization'!
+initializeDate: aGregorianDate timeLineFilter: aTimeLineFilter
+
+	date := aGregorianDate.
+	timeLineFilter := aTimeLineFilter! !
+
+!FilteredGregorianDate methodsFor: 'testing'!
+isFirstDayOfMonth
+
+	^date isFirstDayOfMonth! !
+
+!FilteredGregorianDate methodsFor: 'testing'!
+isFirstDayOfYear
+
+	^date isFirstDayOfYear! !
+
+!FilteredGregorianDate methodsFor: 'testing'!
+isLastDayOfMonth
+
+	^date isLastDayOfMonth! !
+
+!FilteredGregorianDate methodsFor: 'testing'!
+isLastDayOfYear
+
+	^date isLastDayOfYear! !
+
+!FilteredGregorianDate methodsFor: 'enumerating'!
+next: aMeasure 
+	
+	^date next: aMeasure! !
+
+!FilteredGregorianDate methodsFor: 'enumerating' stamp: 'mx 4/3/2006 20:24'!
+nextFiltered
+
+	^self class
+		date: (timeLineFilter next: (GregorianTimespan from: self duration: GregorianDay oneDay))
+		timeLineFilter: timeLineFilter! !
+
+!FilteredGregorianDate methodsFor: 'enumerating' stamp: 'mx 4/3/2006 20:24'!
+previousFiltered
+
+	^self class
+		date:
+			(timeLineFilter next: (GregorianTimespan from: self duration: GregorianDay oneDay negated))
+		timeLineFilter: timeLineFilter! !
+
+!FilteredGregorianDate methodsFor: 'evaluating'!
+value
+
+	^date
+! !
+
+!FilteredGregorianDate class methodsFor: 'preconditions'!
+assert: aTimeLineFilter includes: aGregorianDate
+
+	(aTimeLineFilter includes: aGregorianDate) 
+		ifFalse: [
+			DateNotIncludedInTimeLineFilterException signalDate: aGregorianDate timeLineFilter: aTimeLineFilter ]! !
+
+!FilteredGregorianDate class methodsFor: 'instance creation'!
+date: aGregorianDate timeLineFilter: aTimeLineFilter
+
+	self assert: aTimeLineFilter includes: aGregorianDate.
+	^self new initializeDate: aGregorianDate timeLineFilter: aTimeLineFilter! !
+
+!RelativeGregorianDate methodsFor: 'printing'!
+printOn: aStream
+
+	^self absoluteDate printOn: aStream! !
+
+!RelativeGregorianDate methodsFor: 'magnitude protocol'!
+< aGregorianDate
+
+	^self absoluteDate < aGregorianDate! !
+
+!RelativeGregorianDate methodsFor: 'comparing'!
+= anObject
+
+	^self == anObject or: [
+		(self class = anObject class and: [self absoluteDate = anObject absoluteDate])
+			or: [self absoluteDate = anObject]]! !
+
+!RelativeGregorianDate methodsFor: 'comparing'!
+hash
+
+	^self absoluteDate hash! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+absoluteDate
+	"It is necessary to send #value for not assume that the dates of the time line filter are absolute ,
+	and also it is necessary to send #value to the timespan in order to obtain a relative timespan"
+	
+	^(timeLineFilter next: timespan value) value! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+dayNumber
+	
+	^self absoluteDate dayNumber! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+dayOfMonth
+
+	^self absoluteDate dayOfMonth! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+month
+
+	^self absoluteDate month! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+monthOfYear
+
+	^self absoluteDate monthOfYear! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+timeLineFilter
+
+	^timeLineFilter! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+timespan
+
+	^timespan! !
+
+!RelativeGregorianDate methodsFor: 'accessing'!
+year
+
+	^self absoluteDate year! !
+
+!RelativeGregorianDate methodsFor: 'visitor accepting'!
+accept: aVisitor 
+
+	^aVisitor visitRelativeGregorianDate: self! !
+
+!RelativeGregorianDate methodsFor: 'accessing - days'!
+day
+	
+	^self absoluteDate day! !
+
+!RelativeGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysFromBaseDate
+
+	^self absoluteDate numberOfDaysFromBaseDate! !
+
+!RelativeGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysFromBeginningOfMonth
+
+	^self absoluteDate numberOfDaysFromBeginningOfMonth! !
+
+!RelativeGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysFromJanuaryFirst
+
+	^self absoluteDate numberOfDaysFromJanuaryFirst! !
+
+!RelativeGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysToEndOfMonth
+
+	^self absoluteDate numberOfDaysToEndOfMonth! !
+
+!RelativeGregorianDate methodsFor: 'accessing - days'!
+numberOfDaysToEndOfYear
+
+	^self absoluteDate numberOfDaysToEndOfYear! !
+
+!RelativeGregorianDate methodsFor: 'initialization'!
+initializeTimespan: aTimespan using: aTimeLineFilter
+	
+	timespan := aTimespan.
+	timeLineFilter := aTimeLineFilter! !
+
+!RelativeGregorianDate methodsFor: 'testing'!
+isFirstDayOfMonth
+	
+	^self absoluteDate isFirstDayOfMonth! !
+
+!RelativeGregorianDate methodsFor: 'testing'!
+isFirstDayOfYear
+
+	^self absoluteDate isFirstDayOfYear! !
+
+!RelativeGregorianDate methodsFor: 'testing'!
+isLastDayOfMonth
+
+	^self absoluteDate isLastDayOfMonth! !
+
+!RelativeGregorianDate methodsFor: 'testing'!
+isLastDayOfYear
+
+	^self absoluteDate isLastDayOfYear! !
+
+!RelativeGregorianDate methodsFor: 'enumerating'!
+next: aMeasure
+
+	^self absoluteDate next: aMeasure! !
+
+!RelativeGregorianDate methodsFor: 'evaluating'!
+value
+
+	^self absoluteDate! !
+
+!RelativeGregorianDate class methodsFor: 'instance creation'!
+timespan: aTimespan using: aTimeLineFilter
+	
+	^self new initializeTimespan: aTimespan using: aTimeLineFilter! !
+
+!FixedGregorianDate methodsFor: 'printing'!
+printOn: aStream
+
+	self month printOn: aStream.
+	aStream space.
+	dayNumber printOn: aStream.
+	aStream nextPut: $,.
+	aStream space.
+	self year number printOn: aStream! !
+
 !FixedGregorianDate methodsFor: 'magnitude protocol'!
 < aGregorianDate
 
@@ -1598,280 +3222,14 @@ theEndOfTime
 
 	^theEndOfTime! !
 
-!FilteredGregorianDate methodsFor: 'magnitude protocol'!
-< aDate
-
-	^date < aDate value! !
-
-!FilteredGregorianDate methodsFor: 'comparing'!
-= anObject
-
-	^date = anObject! !
-
-!FilteredGregorianDate methodsFor: 'comparing'!
-hash
-
-	^date hash! !
-
-!FilteredGregorianDate methodsFor: 'accessing'!
-date
-	
-	^date! !
-
-!FilteredGregorianDate methodsFor: 'accessing'!
-dayNumber
-
-	^date dayNumber! !
-
-!FilteredGregorianDate methodsFor: 'accessing'!
-dayOfMonth
-
-	^date dayOfMonth! !
-
-!FilteredGregorianDate methodsFor: 'accessing'!
-month
-	
-	^date month! !
-
-!FilteredGregorianDate methodsFor: 'accessing'!
-monthOfYear
-	
-	^date monthOfYear! !
-
-!FilteredGregorianDate methodsFor: 'accessing'!
-year
-
-	^date year! !
-
-!FilteredGregorianDate methodsFor: 'accessing - days'!
-day
-	
-	^date day! !
-
-!FilteredGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysFromBaseDate
-
-	^date numberOfDaysFromBaseDate! !
-
-!FilteredGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysFromBeginningOfMonth
-
-	^date numberOfDaysFromBeginningOfMonth! !
-
-!FilteredGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysFromJanuaryFirst
-
-	^date numberOfDaysFromJanuaryFirst! !
-
-!FilteredGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysToEndOfMonth
-
-	^date numberOfDaysToEndOfMonth! !
-
-!FilteredGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysToEndOfYear
-
-	^date numberOfDaysToEndOfYear! !
-
-!FilteredGregorianDate methodsFor: 'initialization'!
-initializeDate: aGregorianDate timeLineFilter: aTimeLineFilter
-
-	date := aGregorianDate.
-	timeLineFilter := aTimeLineFilter! !
-
-!FilteredGregorianDate methodsFor: 'testing'!
-isFirstDayOfMonth
-
-	^date isFirstDayOfMonth! !
-
-!FilteredGregorianDate methodsFor: 'testing'!
-isFirstDayOfYear
-
-	^date isFirstDayOfYear! !
-
-!FilteredGregorianDate methodsFor: 'testing'!
-isLastDayOfMonth
-
-	^date isLastDayOfMonth! !
-
-!FilteredGregorianDate methodsFor: 'testing'!
-isLastDayOfYear
-
-	^date isLastDayOfYear! !
-
-!FilteredGregorianDate methodsFor: 'enumerating'!
-next: aMeasure 
-	
-	^date next: aMeasure! !
-
-!FilteredGregorianDate methodsFor: 'enumerating' stamp: 'mx 4/3/2006 20:24'!
-nextFiltered
-
-	^self class
-		date: (timeLineFilter next: (GregorianTimespan from: self duration: GregorianDay oneDay))
-		timeLineFilter: timeLineFilter! !
-
-!FilteredGregorianDate methodsFor: 'enumerating' stamp: 'mx 4/3/2006 20:24'!
-previousFiltered
-
-	^self class
-		date:
-			(timeLineFilter next: (GregorianTimespan from: self duration: GregorianDay oneDay negated))
-		timeLineFilter: timeLineFilter! !
-
-!FilteredGregorianDate methodsFor: 'evaluating'!
-value
-
-	^date
-! !
-
-!FilteredGregorianDate class methodsFor: 'preconditions'!
-assert: aTimeLineFilter includes: aGregorianDate
-
-	(aTimeLineFilter includes: aGregorianDate) 
-		ifFalse: [
-			DateNotIncludedInTimeLineFilterException signalDate: aGregorianDate timeLineFilter: aTimeLineFilter ]! !
-
-!FilteredGregorianDate class methodsFor: 'instance creation'!
-date: aGregorianDate timeLineFilter: aTimeLineFilter
-
-	self assert: aTimeLineFilter includes: aGregorianDate.
-	^self new initializeDate: aGregorianDate timeLineFilter: aTimeLineFilter! !
-
-!RelativeGregorianDate methodsFor: 'magnitude protocol'!
-< aGregorianDate
-
-	^self absoluteDate < aGregorianDate! !
-
-!RelativeGregorianDate methodsFor: 'comparing'!
-= anObject
-
-	^self == anObject or: [
-		(self class = anObject class and: [self absoluteDate = anObject absoluteDate])
-			or: [self absoluteDate = anObject]]! !
-
-!RelativeGregorianDate methodsFor: 'comparing'!
-hash
-
-	^self absoluteDate hash! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-absoluteDate
-	"It is necessary to send #value for not assume that the dates of the time line filter are absolute ,
-	and also it is necessary to send #value to the timespan in order to obtain a relative timespan"
-	
-	^(timeLineFilter next: timespan value) value! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-dayNumber
-	
-	^self absoluteDate dayNumber! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-dayOfMonth
-
-	^self absoluteDate dayOfMonth! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-month
-
-	^self absoluteDate month! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-monthOfYear
-
-	^self absoluteDate monthOfYear! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-timeLineFilter
-
-	^timeLineFilter! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-timespan
-
-	^timespan! !
-
-!RelativeGregorianDate methodsFor: 'accessing'!
-year
-
-	^self absoluteDate year! !
-
-!RelativeGregorianDate methodsFor: 'visitor accepting'!
-accept: aVisitor 
-
-	^aVisitor visitRelativeGregorianDate: self! !
-
-!RelativeGregorianDate methodsFor: 'accessing - days'!
-day
-	
-	^self absoluteDate day! !
-
-!RelativeGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysFromBaseDate
-
-	^self absoluteDate numberOfDaysFromBaseDate! !
-
-!RelativeGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysFromBeginningOfMonth
-
-	^self absoluteDate numberOfDaysFromBeginningOfMonth! !
-
-!RelativeGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysFromJanuaryFirst
-
-	^self absoluteDate numberOfDaysFromJanuaryFirst! !
-
-!RelativeGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysToEndOfMonth
-
-	^self absoluteDate numberOfDaysToEndOfMonth! !
-
-!RelativeGregorianDate methodsFor: 'accessing - days'!
-numberOfDaysToEndOfYear
-
-	^self absoluteDate numberOfDaysToEndOfYear! !
-
-!RelativeGregorianDate methodsFor: 'initialization'!
-initializeTimespan: aTimespan using: aTimeLineFilter
-	
-	timespan := aTimespan.
-	timeLineFilter := aTimeLineFilter! !
-
-!RelativeGregorianDate methodsFor: 'testing'!
-isFirstDayOfMonth
-	
-	^self absoluteDate isFirstDayOfMonth! !
-
-!RelativeGregorianDate methodsFor: 'testing'!
-isFirstDayOfYear
-
-	^self absoluteDate isFirstDayOfYear! !
-
-!RelativeGregorianDate methodsFor: 'testing'!
-isLastDayOfMonth
-
-	^self absoluteDate isLastDayOfMonth! !
-
-!RelativeGregorianDate methodsFor: 'testing'!
-isLastDayOfYear
-
-	^self absoluteDate isLastDayOfYear! !
-
-!RelativeGregorianDate methodsFor: 'enumerating'!
-next: aMeasure
-
-	^self absoluteDate next: aMeasure! !
-
-!RelativeGregorianDate methodsFor: 'evaluating'!
-value
-
-	^self absoluteDate! !
-
-!RelativeGregorianDate class methodsFor: 'instance creation'!
-timespan: aTimespan using: aTimeLineFilter
-	
-	^self new initializeTimespan: aTimespan using: aTimeLineFilter! !
+!GregorianDateTime methodsFor: 'printing' stamp: 'HAW 1/15/2019 19:22:59'!
+printOn: aStream
+
+	aStream 
+		print: date;
+		nextPutAll: ' at ';
+		print: timeOfDay.
+		! !
 
 !GregorianDateTime methodsFor: 'magnitude protocol'!
 < aGregorianDayTime
@@ -2037,6 +3395,11 @@ amountOfDaysPerWeek
 	
 	^self class amountOfDaysPerWeek! !
 
+!GregorianDay methodsFor: 'accessing'!
+name
+	
+	^name! !
+
 !GregorianDay methodsFor: 'accessing' stamp: 'HAW 3/25/2017 19:11:51'!
 numberOfDaysSinceSunday
 
@@ -2046,6 +3409,11 @@ numberOfDaysSinceSunday
 positionInWeek
 
 	^positionInWeek! !
+
+!GregorianDay methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: name! !
 
 !GregorianDay methodsFor: 'magnitude protocol'!
 < aGregorianDay
@@ -2472,6 +3840,13 @@ zeroDays
 
 	^ZeroDays! !
 
+!GregorianDayOfMonth methodsFor: 'printing'!
+printOn: aStream
+
+	month printOn: aStream.
+	aStream space.
+	dayNumber printOn: aStream! !
+
 !GregorianDayOfMonth methodsFor: 'accessing - dates'!
 , aYearNumber
 
@@ -2651,6 +4026,11 @@ amountOfMonthsPerYear
 	^self class amountOfMonthsPerYear! !
 
 !GregorianMonth methodsFor: 'accessing'!
+name
+	
+	self subclassResponsibility! !
+
+!GregorianMonth methodsFor: 'accessing'!
 number
 	
 	self subclassResponsibility! !
@@ -2659,6 +4039,11 @@ number
 oneMonth
 	
 	^self class oneMonth! !
+
+!GregorianMonth methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: self name! !
 
 !GregorianMonth methodsFor: 'month of year creation' stamp: 'HAW 2/19/2019 15:14:03'!
 , aYearNumber
@@ -3377,6 +4762,11 @@ initializeGlobalVariables
 	Smalltalk at: #December put: self december! !
 
 !FebruaryGregorianMonth methodsFor: 'accessing'!
+name
+	
+	^GregorianMonth februaryName! !
+
+!FebruaryGregorianMonth methodsFor: 'accessing'!
 number
 	
 	^GregorianMonth februaryNumber! !
@@ -3421,6 +4811,11 @@ new
 	"Instance of this month should be accessed using GregorianMonth february"
 
 	^uniqueInstance! !
+
+!ThirtyDaysGregorianMonth methodsFor: 'accessing'!
+name
+	
+	^name! !
 
 !ThirtyDaysGregorianMonth methodsFor: 'accessing'!
 number
@@ -3514,6 +4909,11 @@ thirtyfirst
 	^GregorianDayOfMonth month: self dayNumber: 31! !
 
 !JanuaryGregorianMonth methodsFor: 'accessing'!
+name
+	
+	^GregorianMonth januaryName! !
+
+!JanuaryGregorianMonth methodsFor: 'accessing'!
 number
 	
 	^GregorianMonth januaryNumber! !
@@ -3550,6 +4950,11 @@ new
 	"Instance of this month should be accessed using GregorianMonth january"
 
 	^uniqueInstance! !
+
+!NonSpecificThirtyOneDaysGregorianMonth methodsFor: 'accessing'!
+name
+	
+	^name! !
 
 !NonSpecificThirtyOneDaysGregorianMonth methodsFor: 'accessing'!
 number
@@ -3628,9 +5033,21 @@ monthNumber
 	^month number! !
 
 !GregorianMonthOfYear methodsFor: 'accessing'!
+name
+	
+	^month name! !
+
+!GregorianMonthOfYear methodsFor: 'accessing'!
 year
 	
 	^year! !
+
+!GregorianMonthOfYear methodsFor: 'printing'!
+printOn: aStream
+
+	month printOn: aStream.
+	aStream nextPutAll: ' of '.
+	year printOn: aStream! !
 
 !GregorianMonthOfYear methodsFor: 'magnitude protocol'!
 < aGregorianMonth
@@ -3873,6 +5290,12 @@ yearNumber: aYearNumber month: aGregorianMonth
 yearNumber: aYearNumber monthNumber: aMonthNumber
 
 	^self year: (GregorianYear number: aYearNumber) monthNumber: aMonthNumber! !
+
+!GregorianYear methodsFor: 'printing'!
+printOn: aStream
+
+	aStream nextPutAll: 'Year '.
+	self number printOn: aStream! !
 
 !GregorianYear methodsFor: 'magnitude protocol'!
 < aGregorianYear
@@ -4267,6 +5690,16 @@ numberOfDaysInFebruary
 	
 	^GregorianDay twentyEightDays! !
 
+!TimeOfDay methodsFor: 'printing' stamp: 'HAW 11/14/2019 07:26:20'!
+printOn: aStream
+
+	self hours amount printOn: aStream.
+	aStream nextPut: $:.
+	self minutes amount printOn: aStream base: 10 nDigits: 2.
+	aStream nextPut: $:.
+	self seconds amount printOn: aStream base: 10 nDigits: 2.
+	! !
+
 !TimeOfDay methodsFor: 'magnitude protocol'!
 < aTime
 
@@ -4512,479 +5945,6 @@ initializeZeroHours
 canNotCreateTimeOfDayUsingSemiColonErrorDescription
 	
 	^'Can not create a time of day using #: when seconds are not zero'! !
-
-!DefinedByRules methodsFor: 'adding/removing'!
-add: newObject
-
-	Error signal: 'To add elements is not allowed by ', self class name! !
-
-!DefinedByRules methodsFor: 'adding/removing'!
-remove: oldObject ifAbsent: anExceptionBlock
-
-	Error signal: 'To remove elements is not allowed by ', self class name! !
-
-!DefinedByRules methodsFor: 'add/removing rules'!
-addRule: anInclusionRule
-
-	^rules add: anInclusionRule
-	! !
-
-!DefinedByRules methodsFor: 'add/removing rules'!
-addRules: aCollection 
-
-	^rules addAll: aCollection.! !
-
-!DefinedByRules methodsFor: 'add/removing rules' stamp: 'mx 4/2/2006 19:27'!
-removeAllRules
-	
-	^rules removeAll: rules copy! !
-
-!DefinedByRules methodsFor: 'add/removing rules'!
-removeRule: anInclusionRule
-
-	^rules remove: anInclusionRule
-! !
-
-!DefinedByRules methodsFor: 'iterating'!
-do: aBlock 
-	
-	universe do: [ :anObject | (self includes: anObject) ifTrue: [ aBlock value: anObject ] ]! !
-
-!DefinedByRules methodsFor: 'querying - excluded'!
-excludedFrom: aMagnitude to: anotherMagnitude
-
-	^self excludedIn: (aMagnitude to: anotherMagnitude)
-	
-! !
-
-!DefinedByRules methodsFor: 'querying - excluded'!
-excludedIn: anInterval
-
-	^anInterval select: [ :each | self excludes: each ]! !
-
-!DefinedByRules methodsFor: 'querying - excluded'!
-excludes: anObject
-
-	^(self includes: anObject) not! !
-
-!DefinedByRules methodsFor: 'querying - excluded'!
-excludesAll: aCollection
-
-	^aCollection allSatisfy: [:each | self excludes: each]! !
-
-!DefinedByRules methodsFor: 'querying - included'!
-includedFrom: aMagnitude to: anotherMagnitude
- 
-	^self includedIn: (aMagnitude to: anotherMagnitude)! !
-
-!DefinedByRules methodsFor: 'querying - included'!
-includedIn: anInterval
-
-	^anInterval select: [:each | self includes: each]! !
-
-!DefinedByRules methodsFor: 'querying - included'!
-includes: anObject
-
-	^(universe includes: anObject ) and: [rules anySatisfy: [ :anInclusionRule | anInclusionRule includes: anObject ]]! !
-
-!DefinedByRules methodsFor: 'querying - included'!
-includesAll: aCollection
-
-	^aCollection allSatisfy: [:anObject | self includes: anObject]! !
-
-!DefinedByRules methodsFor: 'initialization'!
-initializeFor: aUniverse
-	
-	rules := OrderedCollection new.
-	universe := aUniverse! !
-
-!DefinedByRules methodsFor: 'testing'!
-isEmpty
-	"Only for performance"
-	
-	self do: [ :anObject | ^false ].
-	^true! !
-
-!DefinedByRules methodsFor: 'testing'!
-notEmpty
-	"Only for performance"
-	
-	^self isEmpty not! !
-
-!DefinedByRules methodsFor: 'accessing'!
-rules
-
-	^rules copy! !
-
-!DefinedByRules methodsFor: 'accessing'!
-size
-
-	^self inject: 0 into: [ :size :anObject | size + 1 ].! !
-
-!DefinedByRules methodsFor: 'accessing'!
-species
-
-	^OrderedCollection! !
-
-!DefinedByRules methodsFor: 'accessing'!
-universe
-
-	^universe! !
-
-!DefinedByRules methodsFor: 'querying - rules'!
-rulesThatInclude: anObject
-
-	^rules select: [ :anInclusionRule | anInclusionRule includes: anObject ]
-! !
-
-!DefinedByRules class methodsFor: 'instance creating'!
-for: aUniverse 
-
-	^self new initializeFor: aUniverse! !
-
-!DefinedByRules class methodsFor: 'instance creating'!
-forAllUniverse
-
-	^(self for: AllUniverse new)
-		addRule: (PluggableInclusionRule block: [:anObject | true]);
-		yourself! !
-
-!TimeLineFilterStream methodsFor: 'querying'!
-atEnd
-	
-	^false! !
-
-!TimeLineFilterStream methodsFor: 'accessing'!
-current
-
-	^current! !
-
-!TimeLineFilterStream methodsFor: 'initialization'!
-initializeFrom: aGregorianDate using: aTimeLineFilter
-
-	from := aGregorianDate.
-	timeLineFilter := aTimeLineFilter.
-	self reset! !
-
-!TimeLineFilterStream methodsFor: 'enumerating'!
-next
-	
-	current := self peek.	
-	^current.
-! !
-
-!TimeLineFilterStream methodsFor: 'enumerating'!
-peek
-	
-	| nextDate |
-	
-	nextDate := current.
-	[ nextDate := nextDate next.
-	(timeLineFilter includes: nextDate) ] whileFalse.
-
-	^nextDate! !
-
-!TimeLineFilterStream methodsFor: 'enumerating'!
-peekPrevious
-	
-	| nextDate |
-	
-	nextDate := current.
-	[ nextDate := nextDate previous.
-	(timeLineFilter includes: nextDate) ] whileFalse.
-
-	^nextDate! !
-
-!TimeLineFilterStream methodsFor: 'enumerating'!
-previous
-	
-	current := self peekPrevious.	
-	^current.
-! !
-
-!TimeLineFilterStream methodsFor: 'enumerating'!
-reset
-	current := from.
-	! !
-
-!TimeLineFilterStream methodsFor: 'enumerating'!
-skip: aNumberOfDays
-
-	| daysToSkip |
-	
-	daysToSkip := (aNumberOfDays convertTo: TimeUnits day) amount.
-	daysToSkip > 0 
-		ifTrue: [ daysToSkip timesRepeat: [ self next ] ]
-		ifFalse: [ daysToSkip negated timesRepeat: [ self previous ] ]! !
-
-!TimeLineFilterStream class methodsFor: 'instance creation'!
-from: aGregorianDate using: aTimeLineFilter
-
-	^self new initializeFrom: aGregorianDate using: aTimeLineFilter! !
-
-!TimeLineFilterStream class methodsFor: 'instance creation' stamp: 'mx 4/2/2006 19:33'!
-new
-
-	^self basicNew! !
-
-!InvalidDayOfMonthException methodsFor: 'accessing'!
-dayNumber
-
-	^dayNumber! !
-
-!InvalidDayOfMonthException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:19:57'!
-description
-
-	^'Day of month {1} invalid for {2}' format: { dayNumber .month }! !
-
-!InvalidDayOfMonthException methodsFor: 'accessing'!
-month
-
-	^month! !
-
-!InvalidDayOfMonthException methodsFor: 'initialization'!
-initializeMonth: aMonth dayNumber: aDayNumber
-
-	month := aMonth.
-	dayNumber := aDayNumber.! !
-
-!InvalidDayOfMonthException class methodsFor: 'instance creation'!
-month: aMonth dayNumber: aDayNumber
-
-	^self new initializeMonth: aMonth dayNumber: aDayNumber! !
-
-!InvalidDayOfMonthException class methodsFor: 'signaling'!
-signalMonth: aMonth dayNumber: aDayNumber
-
-	(self month: aMonth dayNumber: aDayNumber) signal! !
-
-!InvalidGregorianDateException methodsFor: 'accessing'!
-dayNumber
-	^dayNumber! !
-
-!InvalidGregorianDateException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:09:45'!
-description
-
-	^'The day {1} is invalid for the month {2}' format: { dayNumber .monthOfYear }! !
-
-!InvalidGregorianDateException methodsFor: 'accessing'!
-monthOfYear
-	^monthOfYear! !
-
-!InvalidGregorianDateException methodsFor: 'initialization'!
-initializeMonthOfYear: aGregorianMonth dayNumber: aDayNumber
-
-	monthOfYear := aGregorianMonth.
-	dayNumber := aDayNumber.! !
-
-!InvalidGregorianDateException class methodsFor: 'instance creation'!
-monthOfYear: aGregorianMonth dayNumber: aDayNumber
-
-	^self new initializeMonthOfYear: aGregorianMonth dayNumber: aDayNumber! !
-
-!InvalidGregorianDateException class methodsFor: 'signaling'!
-signalMonth: aGregorianMonth dayNumber: aDayNumber
-
-	^(self monthOfYear: aGregorianMonth dayNumber: aDayNumber) signal! !
-
-!InvalidGregorianDayNameException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:20:56'!
-description
-
-	^'{1} is an invalid name for a day' format: { name }! !
-
-!InvalidGregorianDayNameException methodsFor: 'initialization'!
-initializeName: aName
-
-	name := aName.! !
-
-!InvalidGregorianDayNameException class methodsFor: 'instance creation'!
-name: aName
-
-	^self new initializeName: aName! !
-
-!InvalidGregorianDayNameException class methodsFor: 'signaling'!
-signalName: aName
-
-	(self name: aName) signal! !
-
-!InvalidGregorianDayNumberException methodsFor: 'accessing'!
-dayNumber
-
-	^dayNumber! !
-
-!InvalidGregorianDayNumberException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:20:22'!
-description
-
-	^'The number {1} is invalid as a day of a week' format: { dayNumber }! !
-
-!InvalidGregorianDayNumberException methodsFor: 'initialization'!
-initializeDayNumber: aDayNumber
-
-	dayNumber := aDayNumber.! !
-
-!InvalidGregorianDayNumberException class methodsFor: 'instance creation'!
-dayNumber: aDayNumber
-
-	^self new initializeDayNumber: aDayNumber! !
-
-!InvalidGregorianDayNumberException class methodsFor: 'signaling'!
-signalDayNumber: aDayNumber
-
-	(self dayNumber: aDayNumber) signal! !
-
-!InvalidGregorianMonthNameException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:21:29'!
-description
-
-	^'{1} is an invalid name for a month' format: { name }! !
-
-!InvalidGregorianMonthNameException methodsFor: 'initialization'!
-initializeName: aName
-
-	name := aName.! !
-
-!InvalidGregorianMonthNameException class methodsFor: 'instance creation'!
-name: aName
-
-	^self new initializeName: aName! !
-
-!InvalidGregorianMonthNameException class methodsFor: 'signaling'!
-signalName: aName
-
-	(self name: aName) signal! !
-
-!InvalidGregorianMonthNumberException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:10:03'!
-description
-
-	^'{1} is an invalid number for a month' format: { number }! !
-
-!InvalidGregorianMonthNumberException methodsFor: 'accessing'!
-number
-
-	^number! !
-
-!InvalidGregorianMonthNumberException methodsFor: 'initialization'!
-initializeNumber: aNumber
-
-	number := aNumber! !
-
-!InvalidGregorianMonthNumberException class methodsFor: 'instance creation'!
-number: aNumber
-
-	^self new initializeNumber: aNumber! !
-
-!InvalidGregorianMonthNumberException class methodsFor: 'signaling'!
-signalNumber: aNumber
-
-	(self number: aNumber) signal! !
-
-!InvalidGregorianYearNumberException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:10:41'!
-description
-
-	^'{1} is an invalid number for a year' format: { number }! !
-
-!InvalidGregorianYearNumberException methodsFor: 'accessing'!
-number
-
-	^number! !
-
-!InvalidGregorianYearNumberException methodsFor: 'initialization'!
-initializeNumber: aNumber
-
-	number := aNumber! !
-
-!InvalidGregorianYearNumberException class methodsFor: 'instance creation'!
-number: aNumber
-
-	^self new initializeNumber: aNumber! !
-
-!InvalidGregorianYearNumberException class methodsFor: 'signaling'!
-signalNumber: aNumber
-
-	(self number: aNumber) signal! !
-
-!InvalidTimeOfDayException methodsFor: 'accessing' stamp: 'HAW 12/17/2018 18:27:06'!
-description
-
-	| timeToShow |
-	
-	timeToShow := time unit = TimeUnits day 
-		ifTrue: [ (time convertTo: TimeUnits hour) asFloatAmount ]
-		ifFalse: [ time ].
-		
-	^'The time {1} is invalid for one day' format: { timeToShow }! !
-
-!InvalidTimeOfDayException methodsFor: 'accessing'!
-time
-
-	^time! !
-
-!InvalidTimeOfDayException methodsFor: 'initialization'!
-initializeTime: aTime
-
-	time := aTime.! !
-
-!InvalidTimeOfDayException class methodsFor: 'signaling'!
-signalTime: aTime
-
-	(self time: aTime) signal! !
-
-!InvalidTimeOfDayException class methodsFor: 'instance creation'!
-time: aTime
-
-	^self new initializeTime: aTime! !
-
-!DateNotIncludedInTimeLineFilterException methodsFor: 'accessing'!
-date
-
-	^date! !
-
-!DateNotIncludedInTimeLineFilterException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:33:59'!
-description
-
-	^'{1} is not included in the {2} time line filter' format: { date .timeLineFilter }! !
-
-!DateNotIncludedInTimeLineFilterException methodsFor: 'accessing'!
-timeLineFilter
-
-	^timeLineFilter! !
-
-!DateNotIncludedInTimeLineFilterException methodsFor: 'initialization'!
-initializeDate: aDate timeLineFilter: aTimeLineFilter 
-	date := aDate.
-	timeLineFilter := aTimeLineFilter! !
-
-!DateNotIncludedInTimeLineFilterException class methodsFor: 'instance creation'!
-date: aDate timeLineFilter: aTimeLineFilter 
-	^self new initializeDate: aDate timeLineFilter: aTimeLineFilter! !
-
-!DateNotIncludedInTimeLineFilterException class methodsFor: 'signaling'!
-signalDate: aDate timeLineFilter: aTimeLineFilter 
-	(self date: aDate timeLineFilter: aTimeLineFilter) signal! !
-
-!NotIterateUniverseException methodsFor: 'accessing' stamp: 'HAW 3/25/2017 18:33:05'!
-description
-
-	^'The universe {1} can''t be iterated' format: { universe }! !
-
-!NotIterateUniverseException methodsFor: 'accessing'!
-universe
-
-	^universe! !
-
-!NotIterateUniverseException methodsFor: 'initialization'!
-initializeUniverse: anUniverse
-
-	universe := anUniverse.! !
-
-!NotIterateUniverseException class methodsFor: 'signaling'!
-signalUniverse: anUniverse
-
-	(self universe: anUniverse) signal! !
-
-!NotIterateUniverseException class methodsFor: 'instance creation'!
-universe: anUniverse
-
-	^self new initializeUniverse: anUniverse! !
 
 !AllDatesUniverseTest methodsFor: 'test' stamp: 'HAW 3/25/2017 18:34:42'!
 testDo
@@ -8720,7 +9680,7 @@ testInvalidNameCreation
 
 	self should: [ GregorianDay named: 'Pedro Duque, otro' ]
 		raise: InvalidGregorianDayNameException
-		withExceptionDo: [ :exception | exception description = 'Pedro Duque, otro es un nombre de d¦€a inv¦°lido' ]! !
+		withExceptionDo: [ :exception | exception description = 'Pedro Duque, otro es un nombre de dÂ¦Â€a invÂ¦Â°lido' ]! !
 
 !GregorianDayTest methodsFor: 'test enumerating'!
 testNext
@@ -10877,7 +11837,7 @@ testCreationSecond
 	self assert: time milliseconds = (TimeUnits millisecond with: 0)
 ! !
 
-!TimeOfDayTest methodsFor: 'test instance creation' stamp: 'HAW 11/5/2021 20:42:37'!
+!TimeOfDayTest methodsFor: 'test instance creation' stamp: 'HAW 8/20/2025 12:09:41'!
 testInvalidCreation
 
 	self 
@@ -10885,7 +11845,7 @@ testInvalidCreation
 		raise: InvalidTimeOfDayException
 		withExceptionDo: [:anException |
 			self assert: anException time = (TimeUnits hour with: 24).
-			self assert: anException description = 'The time 24 * hours is invalid for one day' ].
+			self assert: anException description = 'The time 24 * hour is invalid for one day' ].
 		
 	self 
 		should: [ TimeOfDay timeFromMidnight: (TimeUnits millisecond with: -1) ] 
@@ -11097,987 +12057,10 @@ testYear
 	self assert: TimeUnits year = TimeUnits year.
 	self assert: TimeUnits year name = 'year'! !
 
-!PointInTimeIntervalStrategy methodsFor: 'enumerating'!
-advanceFrom: from by: by
-
-	^from next: by! !
-
-!PointInTimeIntervalStrategy methodsFor: 'enumerating'!
-advanceFrom: from steps: steps by: by
-
-	^from next: (steps * by)! !
-
-!DefaultPointInTimeIntervalStrategy methodsFor: 'enumerating'!
-stepsFrom: fromPointInTime to: toPointInTime by: aDistance
-	
-	^(fromPointInTime distanceTo: toPointInTime) / aDistance! !
-
-!DefaultPointInTimeIntervalStrategy class methodsFor: 'initialization'!
-initialize
-
-	self initializeUniqueInstance! !
-
-!DefaultPointInTimeIntervalStrategy class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!DefaultPointInTimeIntervalStrategy class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := self basicNew! !
-
-!DefaultPointInTimeIntervalStrategy class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
-!MoreThanOnePointInTimeIntervalStrategy methodsFor: 'testing'!
-isValidIntervalFrom: aStart to: aStop by: aStep
-
-	^(self stepsFrom: aStart to: aStop by: aStep) > 0! !
-
-!MoreThanOnePointInTimeIntervalStrategy methodsFor: 'enumerating'!
-stepsFrom: fromPointInTime to: toPointInTime by: aDistance
-	
-	^(fromPointInTime distanceTo: toPointInTime) / aDistance! !
-
-!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'initialization'!
-initialize
-
-	self initializeUniqueInstance! !
-
-!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := self basicNew! !
-
-!MoreThanOnePointInTimeIntervalStrategy class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
-!RoundedTimelineIntervalStrategy methodsFor: 'enumerating'!
-stepsFrom: from to: to by: by
-
-	^by > 0
-		ifTrue: [ (from distanceTo: to) / by ]
-		ifFalse: [ (from distanceFrom: to) / by negated ]! !
-
-!RoundedTimelineIntervalStrategy class methodsFor: 'initialization'!
-initialize
-
-	self initializeUniqueInstance! !
-
-!RoundedTimelineIntervalStrategy class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!RoundedTimelineIntervalStrategy class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := self basicNew! !
-
-!RoundedTimelineIntervalStrategy class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
-!GregorianTimespan methodsFor: 'comparing'!
-= anObject
-
-	^self class = anObject class
-		and: [ from = anObject from 
-		and: [ duration = anObject duration ]]! !
-
-!GregorianTimespan methodsFor: 'comparing'!
-hash
-
-	^from hash bitXor: duration hash! !
-
-!GregorianTimespan methodsFor: 'converting' stamp: 'HAW 3/25/2017 20:46:07'!
-asInterval
-
-	^ArithmeticObjectInterval
-		from: from
-		to: self to
-		by: (duration unit with: 1)
-		intervalStrategy: DefaultPointInTimeIntervalStrategy new.! !
-
-!GregorianTimespan methodsFor: 'accessing'!
-duration
-
-	^duration! !
-
-!GregorianTimespan methodsFor: 'accessing'!
-from
-
-	^from! !
-
-!GregorianTimespan methodsFor: 'accessing'!
-to
-	
-	^from next: duration! !
-
-!GregorianTimespan methodsFor: 'initialization'!
-initializeFrom: aGregorianDate duration: aTimeMeasure
-
-	from := aGregorianDate.
-	duration := aTimeMeasure! !
-
-!GregorianTimespan methodsFor: 'evaluating'!
-value
-
-	^self class from: from value duration: duration! !
-
-!GregorianTimespan class methodsFor: 'instance creation'!
-from: aGregorianDate duration: aTimeMeasure
-
-	^self new initializeFrom: aGregorianDate duration: aTimeMeasure
-
-! !
-
-!GregorianTimespan class methodsFor: 'instance creation'!
-fromInterval: anInterval
-
-	^self from: anInterval from duration: (anInterval from distanceTo: anInterval to)! !
-
-!TimeModelInitialization class methodsFor: 'initialization' stamp: 'HAW 3/25/2017 20:36:23'!
-initialize
-
-	"Everything is initialized here because there are dependencies of how the objects are initialized.
-	For that reason the #initialize method of each class cannot be used."
-
-	TimeUnits initializeTimeUnits.
-	FebruaryGregorianMonth initializeUniqueInstance.
-	JanuaryGregorianMonth initializeUniqueInstance.
-	GregorianDay initializeCommonObjects.
-	GregorianMonth initializeCommonObjects.
-	GregorianYear initializeCommonObjects.
-	FixedGregorianDate initializeTheBeginningAndTheEndOfTime.
-	TimeOfDay initializeCommonObjects.
-	GregorianDateTime initializeTheBeginningAndTheEndOfTime! !
-
-!TimeModelInitialization class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-allUnits
-	
-	^OrderedCollection new
-		add: day;
-		add: hour;
-		add: minute;
-		add: second;
-		add: millisecond;
-		add: week;
-		add: month;
-		add: year;
-		yourself.! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-day
-	
-	^day! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-hour
-	
-	^hour! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-millisecond
-	
-	^millisecond! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-minute
-
-	^minute! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-month
-	
-	^month! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-second
-
-	^second! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-week
-
-	^week! !
-
-!TimeUnits class methodsFor: 'accessing - units'!
-year
-	
-	^year! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeDay
-
-	day := BaseUnit named: 'day'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeHour
-
-	hour := ProportionalDerivedUnit 
-		baseUnit: day 
-		conversionFactor: 1/24
-		named: 'hour'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeMillisecond
-
-	millisecond := ProportionalDerivedUnit 
-		baseUnit: day 
-		conversionFactor: 1/(1000*60*60*24)
-		named: 'millisecond'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeMinute
-
-	minute := ProportionalDerivedUnit 
-		baseUnit: day 
-		conversionFactor: 1/(24*60)
-		named: 'minute'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeMonth
-
-	month := BaseUnit nameForOne: 'month' nameForMany: 'months'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeSecond
-
-	second := ProportionalDerivedUnit 
-		baseUnit: day 
-		conversionFactor: 1/(24*60*60)
-		named: 'second'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeTimeUnits
-
-	self initializeDay.
-	self initializeMillisecond.
-	self initializeSecond.
-	self initializeMinute.
-	self initializeHour.
-	self initializeWeek.
-	self initializeMonth.
-	self initializeYear
-! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeWeek
-
-	week := ProportionalDerivedUnit 
-		baseUnit: day 
-		conversionFactor: GregorianDay amountOfDaysPerWeek
-		named: 'week'! !
-
-!TimeUnits class methodsFor: 'initialization'!
-initializeYear
-
-	year := ProportionalDerivedUnit 
-		baseUnit: month 
-		conversionFactor:  GregorianMonth amountOfMonthsPerYear
-		named: 'year'! !
-
-!TimeUnits class methodsFor: 'initialization' stamp: 'HAW 8/22/2017 11:59:11'!
-installUnitsAsGlobals
-
-	self allUnits do: [ :aUnit | Smalltalk at: aUnit name asSymbol put: aUnit ]	! !
-
-!InclusionRule methodsFor: 'querying'!
-includes: anObject
-
-	self subclassResponsibility! !
-
-!ArgentineLaw23555Rule methodsFor: 'accessing'!
-dayOfMonth
-	
-	^dayOfMonth! !
-
-!ArgentineLaw23555Rule methodsFor: 'querying - private'!
-goToNextMondayIfNeeded: aGregorianDate 
-
-	^(self mustGoToNextMonday: aGregorianDate) 
-			ifTrue: [aGregorianDate nextDay: GregorianDay monday]
-			ifFalse: [aGregorianDate]! !
-
-!ArgentineLaw23555Rule methodsFor: 'querying - private'!
-goToPreviousMondayIfNeeded: aGregorianDate 
-
-	^(self mustGoToPreviousMonday: aGregorianDate) 
-			ifTrue: [aGregorianDate previousDay: GregorianDay monday]
-			ifFalse: [aGregorianDate]! !
-
-!ArgentineLaw23555Rule methodsFor: 'querying - private'!
-goToPreviousOrNextMonday: aGregorianDate 
-
-	| gregorianDate |
-	
-	gregorianDate := self goToPreviousMondayIfNeeded: aGregorianDate.
-	gregorianDate := self goToNextMondayIfNeeded: gregorianDate.
-	
-	^gregorianDate! !
-
-!ArgentineLaw23555Rule methodsFor: 'querying - private'!
-mustGoToNextMonday: aGregorianDate 
-
-	^aGregorianDate day = GregorianDay thursday or: [ aGregorianDate day = GregorianDay friday ]! !
-
-!ArgentineLaw23555Rule methodsFor: 'querying - private'!
-mustGoToPreviousMonday: aGregorianDate 
-
-	^aGregorianDate day = GregorianDay tuesday or: [ aGregorianDate day = GregorianDay wednesday ]! !
-
-!ArgentineLaw23555Rule methodsFor: 'querying'!
-includes: aGregorianDate 
-
-	| includedDate |
-	
-	includedDate := self dayOfMonth ofYear: aGregorianDate year.
-	includedDate := self goToPreviousOrNextMonday: includedDate.
-	
-	^aGregorianDate = includedDate! !
-
-!ArgentineLaw23555Rule methodsFor: 'initialization'!
-initializeDayOfMonth: aGregorianDayOfMonth
-
-	dayOfMonth := aGregorianDayOfMonth.
-! !
-
-!ArgentineLaw23555Rule class methodsFor: 'instance creating'!
-dayOfMonth: aGregorianDayOfMonth 
-
-	^self new initializeDayOfMonth: aGregorianDayOfMonth! !
-
-!ArgentineLaw23555Rule class methodsFor: 'instance creating'!
-monthNumber: aMonthNumber dayNumber: aDayNumber 
-
-	^self dayOfMonth: (GregorianDayOfMonth monthNumber: aMonthNumber dayNumber: aDayNumber)
-! !
-
-!CardinalDayMonthRule methodsFor: 'accessing'!
-cardinal
-
-	^cardinal! !
-
-!CardinalDayMonthRule methodsFor: 'accessing'!
-day
-
-	^day! !
-
-!CardinalDayMonthRule methodsFor: 'accessing'!
-month
-
-	^month! !
-
-!CardinalDayMonthRule methodsFor: 'querying'!
-includes: aGregorianDate
-
-	^aGregorianDate = ((month ofYear: aGregorianDate year) cardinal: cardinal day: day)
-! !
-
-!CardinalDayMonthRule methodsFor: 'initialization'!
-initializeCardinal: aNumber day: aGregorianDay month: aGregorianMonth
-
-	cardinal := aNumber.
-	day := aGregorianDay.
-	month := aGregorianMonth.
-! !
-
-!CardinalDayMonthRule class methodsFor: 'instance creating'!
-cardinal: aNumber day: aGregorianDay month: aGregorianMonth 
- 
-	^self new 
-		initializeCardinal: aNumber
-		day: aGregorianDay
-		month: aGregorianMonth
-! !
-
-!DayOfMonthRule methodsFor: 'accessing'!
-decoratedRule
-
-	^decoratedRule! !
-
-!DayOfMonthRule methodsFor: 'querying'!
-includes: aGregorianDate 
-	
-	^decoratedRule includes: aGregorianDate dayOfMonth! !
-
-!DayOfMonthRule methodsFor: 'initialization'!
-initializeRule: anInclusionRule
-
-	decoratedRule := anInclusionRule! !
-
-!DayOfMonthRule class methodsFor: 'instance creation'!
-rule: anInclusionRule
-
-	^self new initializeRule: anInclusionRule! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'accessing'!
-decoratedRule
-
-	^decoratedRule! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'accessing' stamp: 'mx 4/2/2006 19:41'!
-from
-
-	^interval first! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'accessing'!
-interval
-
-	^interval! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'accessing' stamp: 'mx 4/2/2006 19:42'!
-to
-
-	^interval last! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'querying'!
-includes: anObject
-
-	^(self shouldHandle: anObject) and: [ self decoratedRule includes: anObject ]! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'initialization'!
-initializeOn: anInterval apply: anInclusionRule 
-
-	interval := anInterval.
-	decoratedRule := anInclusionRule! !
-
-!IntervalConstrainedInclusionRule methodsFor: 'querying - private'!
-shouldHandle: aMagnitude
-
-	^interval includes: aMagnitude! !
-
-!IntervalConstrainedInclusionRule class methodsFor: 'instance creating'!
-from: aMagnitude to: anotherMagnitude  apply: anInclusionRule
-
-	^self on: (aMagnitude to: anotherMagnitude) apply: anInclusionRule! !
-
-!IntervalConstrainedInclusionRule class methodsFor: 'instance creating'!
-on: anInterval apply: anInclusionRule 
-
-	^self new initializeOn: anInterval apply: anInclusionRule! !
-
-!PluggableInclusionRule methodsFor: 'querying'!
-includes: anObject
-
-	^block value: anObject! !
-
-!PluggableInclusionRule methodsFor: 'initialization'!
-initializeBlock: aBlock 
-	
-	block := aBlock! !
-
-!PluggableInclusionRule class methodsFor: 'instance creation'!
-block: aBlock 
-	
-	^self new initializeBlock: aBlock! !
-
-!SpecificDayRule methodsFor: 'accessing'!
-decoratedRule
-
-	^decoratedRule! !
-
-!SpecificDayRule methodsFor: 'querying'!
-includes: aGregorianDate 
-	
-	^decoratedRule includes: aGregorianDate day! !
-
-!SpecificDayRule methodsFor: 'initialization'!
-initializeRule: anInclusionRule
-
-	decoratedRule := anInclusionRule! !
-
-!SpecificDayRule class methodsFor: 'instance creation'!
-rule: anInclusionRule
-
-	^self new initializeRule: anInclusionRule! !
-
-!SpecificObjectInclusionRule methodsFor: 'querying'!
-includes: anObject
-
-	^object = anObject! !
-
-!SpecificObjectInclusionRule methodsFor: 'initialization'!
-initializeFor: anObject
-
-	object := anObject! !
-
-!SpecificObjectInclusionRule methodsFor: 'accessing'!
-object
-
-	^object! !
-
-!SpecificObjectInclusionRule class methodsFor: 'instance creation'!
-for: anObject
-
-	^self new initializeFor: anObject! !
-
-!TimeLineFilterBehavior methodsFor: 'printing'!
-namedPrintOn: aStream 
-	aStream nextPutAll: self name asString! !
-
-!TimeLineFilterBehavior methodsFor: 'printing'!
-unnamedPrintOn: aStream
-
-	aStream nextPutAll: 'unnamed time line filter'! !
-
-!TimeLineFilterBehavior methodsFor: 'enumerating' stamp: 'HAW 11/10/2021 21:20:59'!
-datesBetween: aGregorianDate and: anotherGregorianDate
-
-	^(aGregorianDate to: anotherGregorianDate) select: [:each | self includes: each]! !
-
-!TimeLineFilterBehavior methodsFor: 'enumerating'!
-next: aTimespan
-
-	| stream |
-	
-	stream := TimeLineFilterStream from: aTimespan from using: self.
-	stream skip: aTimespan duration.
-	^stream current! !
-
-!TimeLineFilterBehavior methodsFor: 'enumerating'!
-streamFrom: aGregorianDate 
-
-	^TimeLineFilterStream from: aGregorianDate using: self! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
-excludedFrom: aGregorianDate to: anotherGregorianDate
-
-	^self negated includedFrom: aGregorianDate to: anotherGregorianDate
-! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
-excludedIn: anInterval
-
-	^self negated includedIn: anInterval! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
-excludes: aGregorianDate
-
-	^self negated includes: aGregorianDate! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - excluded'!
-excludesAll: aCollection
-
-	^self negated includesAll: aCollection! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - included'!
-includedFrom: aGregorianDate to: anotherGregorianDate
- 
-	^self includedIn: (aGregorianDate to: anotherGregorianDate)
-! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - included'!
-includedIn: anInterval
-
-	^anInterval select: [:each | self includes: each]! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - included'!
-includes: aGregorianDate
-	self subclassResponsibility! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - included'!
-includesAll: aCollection
-
-	^aCollection allSatisfy: [:each | self includes: each]! !
-
-!TimeLineFilterBehavior methodsFor: 'querying - included' stamp: 'HAW 11/10/2021 21:21:41'!
-numberOfDatesBetween: aGregorianDate and: anotherGregorianDate
-
-	^SimpleMeasure
-		amount: (self datesBetween: aGregorianDate and: anotherGregorianDate) size
-		unit: TimeUnits day! !
-
-!TimeLineFilterBehavior methodsFor: 'accessing'!
-negated
-	self subclassResponsibility! !
-
-!NegatedTimeLineFilter methodsFor: 'accessing'!
-negated
-	
-	^originalTimeLineFilter! !
-
-!NegatedTimeLineFilter methodsFor: 'querying - included'!
-includes: aGregorianDate
-	
-	^(originalTimeLineFilter includes: aGregorianDate) not! !
-
-!NegatedTimeLineFilter methodsFor: 'initialization'!
-initializeFor: aTimeLineFilter
-
-	originalTimeLineFilter := aTimeLineFilter! !
-
-!NegatedTimeLineFilter class methodsFor: 'instance creation'!
-for: aTimeLineFilter
-
-	^self new initializeFor: aTimeLineFilter! !
-
-!TimeLineFilter methodsFor: 'accessing'!
-negated
-
-	^negatedTimeLineFilter! !
-
-!TimeLineFilter methodsFor: 'accessing'!
-rules
-
-	^inclusionSet rules! !
-
-!TimeLineFilter methodsFor: 'comparing'!
-= anObject
-
-	^self == anObject or: [
-		self class = anObject class and: [
-			self name = anObject name
-		]
-	]! !
-
-!TimeLineFilter methodsFor: 'comparing'!
-hash
-
-	^name hash! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addArgentineLaw23555Rule: aGregorianDayOfMonth 
-	^self addRule: (self argentineLaw23555Rule: aGregorianDayOfMonth)! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addCardinal: aNumber day: aGregorianDay monthRule: aGregorianMonth 
-	^self addRule: (self 
-				cardinal: aNumber
-				day: aGregorianDay
-				monthRule: aGregorianMonth)! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addDateRule: aGregorianDate 
-	
-	^self addRule: (self dateRule: aGregorianDate)! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addDayOfMonthRule: aGregorianDayOfMonth 
-	
-	^self addRule: (self dayOfMonthRule: aGregorianDayOfMonth)! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addDayRule: aGregorianDay 
-
-	^self addRule: (self dayRule: aGregorianDay)
-	! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addRule: aRule for: anInterval
-
-	^self addRule: (self rule: aRule on: anInterval)
-! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules' stamp: 'HAW 3/25/2017 20:37:27'!
-addRule: aRule from: aGregorianDate
-
-	^self addRule: (self rule: aRule from: aGregorianDate to: FixedGregorianDate theEndOfTime)! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addRule: aRule from: aGregorianDate to: anotherGregorianDate
-
-	^self addRule: (self rule: aRule from: aGregorianDate to: anotherGregorianDate)! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addRules: aRuleCollection for: anIntervalOfDays
-
-	aRuleCollection do: [:each | self addRule: each for: anIntervalOfDays]! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules' stamp: 'HAW 3/25/2017 20:37:44'!
-addRules: aRuleCollection from: aGregorianDate
-
-	self addRules: aRuleCollection from: aGregorianDate to: FixedGregorianDate theEndOfTime! !
-
-!TimeLineFilter methodsFor: 'rules - adding specific rules'!
-addRules: aRuleCollection from: aGregorianDate to: anotherGregorianDate
-
-	self addRules: aRuleCollection for: (aGregorianDate to: anotherGregorianDate)! !
-
-!TimeLineFilter methodsFor: 'rules - adding generic rules'!
-addRule: anInclusionRule
-
-	^inclusionSet addRule: anInclusionRule.
-! !
-
-!TimeLineFilter methodsFor: 'rules - adding generic rules'!
-addRules: aCollectionOfInclusionRules
-
-	^inclusionSet addRules: aCollectionOfInclusionRules.
-! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-argentineLaw23555Rule: aGregorianDayOfMonth 
-	^self class argentineLaw23555Rule: aGregorianDayOfMonth! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-cardinal: aNumber day: aGregorianDay monthRule: aGregorianMonth 
-	^self class 
-		cardinal: aNumber
-		day: aGregorianDay
-		monthRule: aGregorianMonth! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-dateRule: aGregorianDate 
-
-	^self class dateRule: aGregorianDate! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-dayOfMonthRule: aGregorianDayOfMonth
-
-	^self class dayOfMonthRule: aGregorianDayOfMonth
-! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-dayRule: aGregorianDay
-
-	^self class dayRule: aGregorianDay! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-rule: anInclusionRule from: aGregorianDate to: anotherGregorianDate
-
-	^self class rule: anInclusionRule from: aGregorianDate to: anotherGregorianDate! !
-
-!TimeLineFilter methodsFor: 'rules - creating'!
-rule: anInclusionRule on: anInterval
-
-	^self class rule: anInclusionRule on: anInterval! !
-
-!TimeLineFilter methodsFor: 'querying - included'!
-includes: aGregorianDate
-
-	^inclusionSet includes: aGregorianDate! !
-
-!TimeLineFilter methodsFor: 'initialization'!
-initialize
-
-	inclusionSet := DefinedByRules for: AllDatesUniverse new.
-	negatedTimeLineFilter := NegatedTimeLineFilter for: self! !
-
-!TimeLineFilter methodsFor: 'initialization'!
-initializeNamed: aName
-
-	name := aName! !
-
-!TimeLineFilter methodsFor: 'rules - removing'!
-removeAllRules
-
-	^inclusionSet removeAllRules! !
-
-!TimeLineFilter methodsFor: 'rules - removing'!
-removeRule: anInclusionRule
-
-	^inclusionSet removeRule: anInclusionRule! !
-
-!TimeLineFilter methodsFor: 'querying - rules'!
-rulesThatInclude: aGregorianDate
-
-	^inclusionSet rulesThatInclude: aGregorianDate! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-argentineLaw23555Rule: aGregorianDayOfMonth 
-	^ArgentineLaw23555Rule dayOfMonth: aGregorianDayOfMonth! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-cardinal: aNumber day: aGregorianDay monthRule: aGregorianMonth 
-
-	^CardinalDayMonthRule 
-		cardinal: aNumber
-		day: aGregorianDay
-		month: aGregorianMonth.
-! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-dateRule: aGregorianDate 
-
-	^SpecificObjectInclusionRule for: aGregorianDate.
-! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-dayOfMonthRule: aGregorianDayOfMonth
-
-	^DayOfMonthRule rule: (SpecificObjectInclusionRule for: aGregorianDayOfMonth)! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-dayRule: aGregorianDay
-
-	^SpecificDayRule rule: (SpecificObjectInclusionRule for: aGregorianDay)! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-rule: anInclusionRule from: aGregorianDate to: anotherGregorianDate
-
-	^self rule: anInclusionRule on: (aGregorianDate to: anotherGregorianDate)! !
-
-!TimeLineFilter class methodsFor: 'rules - creating'!
-rule: anInclusionRule on: anInterval
-
-	^IntervalConstrainedInclusionRule on: anInterval apply: anInclusionRule! !
-
-!TimeLineFilter class methodsFor: 'instance creation'!
-fromString: aString
-
-	^self named: aString! !
-
-!TimeLineFilter class methodsFor: 'instance creation'!
-named: aName
-
-	^self new initializeNamed: aName! !
-
-!TimeLineFilter class methodsFor: 'instance creation'!
-new
-	
-	^super new initialize! !
-
-!Universe methodsFor: 'iterating'!
-do: aBlock 
-	
-	self subclassResponsibility! !
-
-!Universe methodsFor: 'querying'!
-includes: anObject
-
-	self subclassResponsibility! !
-
-!AllDatesUniverse methodsFor: 'iterating'!
-do: aBlock 
-	
-	^NotIterateUniverseException signalUniverse: self! !
-
-!AllDatesUniverse methodsFor: 'accessing' stamp: 'HAW 3/25/2017 20:36:23'!
-from
-
-	^FixedGregorianDate theBeginningOfTime
-	! !
-
-!AllDatesUniverse methodsFor: 'accessing' stamp: 'HAW 3/25/2017 20:36:23'!
-to
-
-	^FixedGregorianDate theEndOfTime
-	! !
-
-!AllDatesUniverse methodsFor: 'querying'!
-includes: anObject
-
-	^anObject isGregorianDate! !
-
-!AllDatesUniverse class methodsFor: 'initialization'!
-initialize
-
-	self initializeUniqueInstance! !
-
-!AllDatesUniverse class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!AllDatesUniverse class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := self basicNew! !
-
-!AllDatesUniverse class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
-!AllUniverse methodsFor: 'iterating'!
-do: aBlock 
-	
-	^NotIterateUniverseException signalUniverse: self! !
-
-!AllUniverse methodsFor: 'querying'!
-includes: anObject
-
-	^true! !
-
-!AllUniverse class methodsFor: 'initialization'!
-initialize
-
-	self initializeUniqueInstance! !
-
-!AllUniverse class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!AllUniverse class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := self basicNew! !
-
-!AllUniverse class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
-!NaturalNumbersTestUniverse methodsFor: 'iterating'!
-do: aBlock 
-	
-	^NotIterateUniverseException signalUniverse: self! !
-
-!NaturalNumbersTestUniverse methodsFor: 'querying'!
-includes: anObject
-
-	^anObject isInteger! !
-
-!NaturalNumbersTestUniverse class methodsFor: 'initialization'!
-initialize
-
-	self initializeUniqueInstance! !
-
-!NaturalNumbersTestUniverse class methodsFor: 'initialization'!
-initializeAfterLoad
-
-	self initialize! !
-
-!NaturalNumbersTestUniverse class methodsFor: 'initialization'!
-initializeUniqueInstance
-
-	uniqueInstance := self basicNew! !
-
-!NaturalNumbersTestUniverse class methodsFor: 'instance creation'!
-new
-
-	^uniqueInstance! !
-
 !Object methodsFor: '*Chalten-Time Extensions'!
 isGregorianDate
 
 	^false! !
-
-!SmallInteger methodsFor: '*Chalten-Extensions' stamp: 'HAW 12/17/2018 18:10:57'!
-: anAmountOfMinutes
-
-	^TimeOfDay hours: self minutes: anAmountOfMinutes ! !
-
-!Time methodsFor: '*Chalten-Time Extensions' stamp: 'HAW 8/22/2017 16:40:45'!
-asMilliseconds
-	"Answer the number of milliseconds since midnight"
-
-	^ self asDurationSinceMidnight totalMilliseconds
-! !
-
-!Delay class methodsFor: '*Chalten-TimeModel' stamp: 'HAW 8/22/2017 17:45:30'!
-for: anAmountOfTime
-
-	^self forSeconds: (anAmountOfTime convertTo: TimeUnits second) amount! !
 
 !SimpleMeasure methodsFor: '*Chalten-Time Extensions' stamp: 'HAW 5/1/2020 23:22:12'!
 after: aPointInTime
@@ -12095,10 +12078,27 @@ from: aPointInTime countingIn: aTimeLineFilter
 	^RelativeGregorianDate
 		timespan: (self after: aPointInTime)
 		using: aTimeLineFilter ! !
+
+!Delay class methodsFor: '*Chalten-TimeModel' stamp: 'HAW 8/22/2017 17:45:30'!
+for: anAmountOfTime
+
+	^self forSeconds: (anAmountOfTime convertTo: TimeUnits second) amount! !
+
+!Time methodsFor: '*Chalten-Time Extensions' stamp: 'HAW 8/22/2017 16:40:45'!
+asMilliseconds
+	"Answer the number of milliseconds since midnight"
+
+	^ self asDurationSinceMidnight totalMilliseconds
+! !
+
+!SmallInteger methodsFor: '*Chalten-Extensions' stamp: 'HAW 12/17/2018 18:10:57'!
+: anAmountOfMinutes
+
+	^TimeOfDay hours: self minutes: anAmountOfMinutes ! !
 DefaultPointInTimeIntervalStrategy initialize!
 MoreThanOnePointInTimeIntervalStrategy initialize!
 RoundedTimelineIntervalStrategy initialize!
-TimeModelInitialization initialize!
 AllDatesUniverse initialize!
 AllUniverse initialize!
 NaturalNumbersTestUniverse initialize!
+TimeModelInitialization initialize!
